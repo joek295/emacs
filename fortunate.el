@@ -1,3 +1,12 @@
+;;; Fortunate mode
+
+; based on the quip mode in the O'Reilly book "Writing GNU Emacs
+; Extensions"
+
+; currently the only difference from the quip mode in that book is the
+; addition of the advice to save-buffer so that the fortunes file is
+; recompiled on saving and the lack of a fortune mode key map.
+
 (defvar fortunate-mode-hook nil
   "Functions to call when entering Fortunate Mode")
 
