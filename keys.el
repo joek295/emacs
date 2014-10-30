@@ -19,22 +19,29 @@
 (global-set-key (kbd "<f2>") (lambda () (interactive) (setq quickbuffer (buffer-name))))
 (global-set-key (kbd "<f12>") 'my-toggle-input-method)
 
-;; Evil leader keys
-(evil-leader/set-key
- "f" 'fill-paragraph
- "n" 'forward-paragraph
- "p" 'backward-paragraph
- "j" 'open-line
- "o" 'newline-below
- "O" 'newline-above
- "d" 'dired
- "g" 'magit-status)
+;; prog-mode keys:
+(define-key prog-mode-map (kbd "C-c i") 'indent-buffer)
 
-;; only run after evil mode has loaded
+;; Evil leader keys
+(eval-after-load 'evil-leader
+  (evil-leader/set-key
+    "f" 'fill-paragraph
+    "n" 'forward-paragraph
+    "p" 'backward-paragraph
+    "j" 'open-line
+    "o" 'newline-below
+    "O" 'newline-above
+    "d" 'dired
+    "g" 'magit-status)
+  )
+
+;; Evil-mode keybindings
+; keybindings which require evil mode. These should only be run after
+; evil-mode itself has loaded.
 (eval-after-load 'evil (progn
                          (define-key evil-normal-state-map "L" 'evil-end-of-line)
                          (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
-                         (define-key evil-insert-state-map "C-g" 'evil-normal-state)
-                         (define-key evil-visual-state-map "C-g" 'evil-normal-state)
-                         (define-key evil-replace-state-map "C-g" 'evil-normal-state)
+                         (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+                         (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state)
+                         (define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state)
                          ))

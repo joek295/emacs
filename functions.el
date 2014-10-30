@@ -34,7 +34,7 @@ buffer. If not, set it to *scratch*, and then switch."
 
 (defadvice switch-to-buffer (before save-buffer-now activate)
   "Save buffer before switching."
-    (when buffer-file-name (save-buffer)))
+  (when buffer-file-name (save-buffer)))
 
 ;; Window splitting
 (defun split-window-right-and-switch ()
@@ -52,27 +52,27 @@ that window."
 When a buffer points to an existing file (rather than being a
 non-user buffer), then save the buffer whenever switching away
 from it to another window."
-    (when buffer-file-name (save-buffer)))
+  (when buffer-file-name (save-buffer)))
 
 (defun swap-windows ()
-   "If you have 2 windows, swap them.
+  "If you have 2 windows, swap them.
 
 Function taken from Steve Yegge's blog."
-   (interactive)
-   (cond ((not (= (count-windows) 2))
-          (message "You need exactly 2 windows to do this."))
-         (t
-          (let*
-              ((w1 (first (window-list)))
-               (w2 (second (window-list)))
-               (b1 (window-buffer w1))
-               (b2 (window-buffer w2))
-               (s1 (window-start w1))
-               (s2 (window-start w2)))
-            (set-window-buffer w1 b2)
-            (set-window-buffer w2 b1)
-            (set-window-start w1 s2)
-            (set-window-start w2 s1)))))
+  (interactive)
+  (cond ((not (= (count-windows) 2))
+         (message "You need exactly 2 windows to do this."))
+        (t
+         (let*
+             ((w1 (first (window-list)))
+              (w2 (second (window-list)))
+              (b1 (window-buffer w1))
+              (b2 (window-buffer w2))
+              (s1 (window-start w1))
+              (s2 (window-start w2)))
+           (set-window-buffer w1 b2)
+           (set-window-buffer w2 b1)
+           (set-window-start w1 s2)
+           (set-window-start w2 s1)))))
 
 ;; Navigating withing a file
 (defun smart-move-to-beginning-of-line ()
@@ -88,10 +88,10 @@ character.
 This is based off (directly copied from?) something I found
 online, though I can't remember where."
   (interactive)
-  ; remember where point originally was and run back-to-indentation
+; remember where point originally was and run back-to-indentation
   (let ((orig-point (point)))
     (back-to-indentation)
-    ; if point has not moved, then run move-to-beginning-of-line
+; if point has not moved, then run move-to-beginning-of-line
     (when (= orig-point (point))
       (move-beginning-of-line 1))))
 
@@ -133,7 +133,7 @@ Function taken from Steve Yegge's blog."
         (set-visited-file-name newname)
         (set-buffer-modified-p nil) t))))
 
-;; Lisp-ing
+;; Coding
 
 (defun fc-eval-and-replace ()
   "Replace the preceding sexp with its value.
@@ -150,6 +150,17 @@ emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere"
              (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
+
+(defun indent-buffer ()
+  "Re-indent the entire buffer.
+
+Delete all trailing whitespace, re-indent, and then untabify the
+entire buffer."
+  (interactive)
+  (delet-trailing-whitespace)
+  (indent-region (point-min) (point-max))
+  (untabify (point-min) (point-max))
+  )
 
 ;; Misc
 (defun freqanalyse ()
