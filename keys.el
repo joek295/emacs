@@ -4,8 +4,12 @@
 ; the keys <C-c ?>, where ? is a single letter or number are free, as
 ; are all Fn where n > 4
 
+;; Overriding built-in functionality:
+(global-set-key (kbd "C-x C-e") 'eval-defun)
+
 ;; C-c <some key>
 (global-set-key (kbd "C-c e") 'eval-buffer)
+(global-set-key (kbd "C-c E") 'fc-eval-and-replace)
 (global-set-key (kbd "C-c b") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-c v") 'split-window-right-and-switch)
 (global-set-key (kbd "C-c f") 'elfeed)
@@ -22,7 +26,9 @@
  "p" 'backward-paragraph
  "j" 'open-line
  "o" 'newline-below
- "O" 'newline-above)
+ "O" 'newline-above
+ "d" 'dired
+ "g" 'magit-status)
 
 ;; only run after evil mode has loaded
 (eval-after-load 'evil (progn

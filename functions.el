@@ -133,6 +133,24 @@ Function taken from Steve Yegge's blog."
         (set-visited-file-name newname)
         (set-buffer-modified-p nil) t))))
 
+;; Lisp-ing
+
+(defun fc-eval-and-replace ()
+  "Replace the preceding sexp with its value.
+
+If the sexp throws an error, do not replace the
+expression. Simply give an error message.
+
+Taken from
+emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere"
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
 ;; Misc
 (defun freqanalyse ()
   "Frequency Analyse the open buffer.
