@@ -86,9 +86,7 @@ http://reddit.com/r/emacs/2hhhvg"
                my-mode-line-evilstate
                my-mode-line-active
                my-mode-line-buffname
-               my-mode-line-separator
                my-mode-line-modename
-               my-mode-line-separator
                my-mode-line-position
                my-mode-line-modified
                my-mode-line-readonly
