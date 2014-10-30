@@ -111,3 +111,4 @@
 (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'calendar-mode-hook (lambda () (evil-local-mode -1)))
+(add-hook 'magit-mode-hook (lambda () (evil-local-mode -1)))
