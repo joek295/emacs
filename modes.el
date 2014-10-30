@@ -107,8 +107,10 @@
 ; tex mode
 (add-hook 'tex-mode-hook 'refill-mode)
 (add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
+; magit modes
+(add-hook 'magit-mode-hook (lambda () (evil-local-mode -1)))
+(add-hook 'magit-log-edit-mode-hook 'refill-mode)
 ; misc modes
 (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'calendar-mode-hook (lambda () (evil-local-mode -1)))
-(add-hook 'magit-mode-hook (lambda () (evil-local-mode -1)))
