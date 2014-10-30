@@ -6,7 +6,7 @@
 
 ; fix evil mode so that <tab> works as expected in org mode: this is
 ; required to come before (require 'evil) for some reason
-(setq evil-want-C-i-jump nil) 
+(setq evil-want-C-i-jump nil)
 
 ; load the needed mode files
 (require 'color-theme)
@@ -17,29 +17,29 @@
 (require 'evil-leader)
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters")
 
-(electric-pair-mode) 
-(column-number-mode 1) 
+(electric-pair-mode)
+(column-number-mode 1)
 (menu-bar-mode 0)
 (global-linum-mode 1)
-(ido-mode t) 
+(ido-mode t)
 (global-evil-leader-mode)
-(evil-mode 1) 
+(evil-mode 1)
 (auto-compression-mode 1)
 
 ; which major mode to load: default to text mode, use fortunate mode
 ; in files which end in the string 'fortunes', and always use LaTeX
 ; mode for .tex files: I don't write other TeX dialects
 (setq default-major-mode 'text-mode)
-(setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist)) 
-(setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist)) 
+(setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
 
 ;; ido mode
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(setq ido-ignore-buffers '("\\` " "^\*")) 
+(setq ido-ignore-buffers '("\\` " "^\*"))
 (add-hook 'ido-setup-hook
           (lambda ()
-            "When typing '~' in ido-find-file, go to the home directory." 
+            "When typing '~' in ido-find-file, go to the home directory."
             (define-key ido-file-completion-map
               (kbd "~")
               (lambda ()
@@ -59,11 +59,13 @@
 
 (defadvice switch-to-buffer (before return-to-normal-now activate)
   "Return to normal mode before switching buffer"
-  (evil-normal-state))
+  (when evil-mode
+    (evil-normal-state)))
 
 (defadvice other-window (before other-window-normal-now activate)
   "Return to normal mode before switching window"
-  (evil-normal-state))
+  (when evil-mode
+    (evil-normal-state)))
 
 
 ;; flyspell mode
@@ -98,18 +100,23 @@
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
+
 ; org mode
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook (lambda () (toggle-truncate-lines -1)))
+
 ; text mode
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
+
 ; tex mode
 (add-hook 'tex-mode-hook 'refill-mode)
 (add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
+
 ; magit modes
 (add-hook 'magit-mode-hook (lambda () (evil-local-mode -1)))
 (add-hook 'magit-log-edit-mode-hook 'refill-mode)
+
 ; misc modes
 (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
