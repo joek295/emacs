@@ -5,7 +5,7 @@
 ; myself, but some taken from various places on the web.  This file
 ; also contains advice for existing Emacs functions.
 
-;; Buffer switching commands
+;; Buffer manipulation
 (defun switch-to-previous-buffer ()
   "Switch the open buffer to the previous buffer."
   (interactive)
@@ -35,6 +35,13 @@ buffer. If not, set it to *scratch*, and then switch."
 (defadvice switch-to-buffer (before save-buffer-now activate)
   "Save buffer before switching."
   (when buffer-file-name (save-buffer)))
+
+(defun kill-active-buffer ()
+  "Kill the active buffer.
+
+Essentially the same as M-x kill-buffer <RET>."
+  (interactive)
+  (kill-buffer (buffer-name)))
 
 ;; Window splitting
 (defun split-window-right-and-switch ()
@@ -157,7 +164,7 @@ emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere"
 Delete all trailing whitespace, re-indent, and then untabify the
 entire buffer."
   (interactive)
-  (delet-trailing-whitespace)
+  (delete-trailing-whitespace)
   (indent-region (point-min) (point-max))
   (untabify (point-min) (point-max))
   )

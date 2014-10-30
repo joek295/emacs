@@ -32,3 +32,4 @@
 (defvaralias 'c-basic-offset 'tab-width) 
 (defvaralias 'cperl-indent-level 'tab-width) 
 (defalias 'yes-or-no-p 'y-or-n-p) 
+(defalias 'list-buffers 'ibuffer) 

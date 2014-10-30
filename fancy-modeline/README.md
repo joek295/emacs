@@ -26,6 +26,8 @@ it can be used without it.
 
 * Read-only indicator
 
+* Overwrite indicator
+
 ## Future Features:
 
 Features which may be implemented in the future include:

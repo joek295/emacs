@@ -1,6 +1,6 @@
 ;;; fancy-modeline: a modeline for evil-mode users
 
-;; Author: Joe Kitchen 
+;; Author: Joe Kitchen
 ;; Created: 2014-10-27
 ;; Version: 1.0.0
 
@@ -45,8 +45,7 @@ http://reddit.com/r/emacs/2hhhvg"
    (get-buffer-window)))
 
 (setq my-mode-line-position
-      '(:eval (concat (propertize "[%p: L%02l, C%02c]" 'face 'mode-line-position-face)
-                      (propertize "|" 'face 'mode-line-standard-face))))
+      '(:eval (propertize "[%p: L%02l, C%02c]" 'face 'mode-line-position-face)))
 
 (setq my-mode-line-readonly
       '(:eval (when buffer-read-only
@@ -54,7 +53,8 @@ http://reddit.com/r/emacs/2hhhvg"
 
 (setq my-mode-line-modified
       '(:eval (when (buffer-modified-p)
-                (propertize "[ + ]" 'face 'mode-line-modified-face))))
+                (concat (propertize "|" 'face 'mode-line-standard-face)
+                        (propertize "[ + ]" 'face 'mode-line-modified-face)))))
 
 (setq my-mode-line-modename
       '(:eval (concat (propertize " %m " 'face 'mode-line-bold-face)
@@ -81,6 +81,13 @@ http://reddit.com/r/emacs/2hhhvg"
                 (concat (propertize "ACTIVE" 'face 'mode-line-active-face)
                         (propertize "|" 'face 'mode-line-standard-face)))))
 
+(setq my-mode-line-overwrite
+      '(:eval (if overwrite-mode
+                  (concat (propertize "|" 'face 'mode-line-standard-face)
+                          (propertize "OVR" 'face 'mode-line-emacs-face))
+                (concat (propertize "|" 'face 'mode-line-standard-face)
+                        (propertize "INS" 'face 'mode-line-standard-face)))))
+
 (setq-default mode-line-format
               (list
                my-mode-line-evilstate
@@ -90,6 +97,7 @@ http://reddit.com/r/emacs/2hhhvg"
                my-mode-line-position
                my-mode-line-modified
                my-mode-line-readonly
+               my-mode-line-overwrite
                ))
 
 (provide 'fancy-modeline)
