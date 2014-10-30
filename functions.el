@@ -199,6 +199,7 @@ run toggle-input-method (C-\)."
 
 (defun newline-above ()
   "create an empty line above the point."
+  (interactive)
   (save-excursion
     (beginning-of-line)
     (newline)))

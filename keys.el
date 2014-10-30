@@ -35,4 +35,6 @@
                          (define-key evil-normal-state-map "L" 'evil-end-of-line)
                          (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
                          (define-key evil-insert-state-map "C-g" 'evil-normal-state)
+                         (define-key evil-visual-state-map "C-g" 'evil-normal-state)
+                         (define-key evil-replace-state-map "C-g" 'evil-normal-state)
                          ))
