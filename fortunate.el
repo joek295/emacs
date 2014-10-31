@@ -32,6 +32,7 @@
     (fortune-compile (buffer-file-name)))
   )
 
+
 (defun count-fortunes ()
   "Count the number of fortunes in the buffer."
   (interactive)

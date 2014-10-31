@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/.emacs.d/fancy-modeline")
 
 (autoload 'fortunate-mode "fortunate")
+(autoload 'shortlines-mode "shortlines")
 (load "functions.el")
 (load "keys.el")
 (load "my-config.el")

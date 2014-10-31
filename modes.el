@@ -6,7 +6,7 @@
 
 ; fix evil mode so that <tab> works as expected in org mode: this is
 ; required to come before (require 'evil) for some reason
-(setq evil-want-C-i-jump nil)
+;(setq evil-want-C-i-jump nil)
 
 ; load the needed mode files
 (require 'color-theme)
@@ -31,12 +31,17 @@
 ; mode for .tex files: I don't write other TeX dialects
 (setq default-major-mode 'text-mode)
 (setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\NEWS$" . shortlines-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\README" . shortlines-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\Readme" . shortlines-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\readme" . shortlines-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
 
 ;; ido mode
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-ignore-buffers '("\\` " "^\*"))
+(setq ido-create-new-buffer 'always)
 (add-hook 'ido-setup-hook
           (lambda ()
             "When typing '~' in ido-find-file, go to the home directory."

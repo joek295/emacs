@@ -81,6 +81,10 @@ http://reddit.com/r/emacs/2hhhvg"
                 (concat (propertize "ACTIVE" 'face 'mode-line-active-face)
                         (propertize "|" 'face 'mode-line-standard-face)))))
 
+(setq my-mode-line-input
+      '(:eval (concat (propertize "|" 'face 'mode-line-standard-face)
+                      (propertize (message current-input-method) 'face 'mode-line-standard-face))))
+
 (setq my-mode-line-overwrite
       '(:eval (if overwrite-mode
                   (concat (propertize "|" 'face 'mode-line-standard-face)
@@ -98,6 +102,7 @@ http://reddit.com/r/emacs/2hhhvg"
                my-mode-line-modified
                my-mode-line-readonly
                my-mode-line-overwrite
+               my-mode-line-input
                ))
 
 (provide 'fancy-modeline)

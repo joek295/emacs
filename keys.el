@@ -12,7 +12,7 @@
 ; Overriding built-in functionality:
 (global-set-key (kbd "C-x C-e") 'eval-defun)
 (global-set-key (kbd "C-x C-k") 'kill-buffer)
-(global-set-key (kbd "C-x k") 'kill-buffer)
+(global-set-key (kbd "C-x k") 'kill-active-buffer)
 
 ; C-c <some key>
 (global-set-key (kbd "C-c e") 'eval-buffer)
@@ -51,7 +51,11 @@
 (eval-after-load 'evil (progn
                          (define-key evil-normal-state-map "L" 'evil-end-of-line)
                          (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
+                         (define-key evil-normal-state-map "zg" 'my-save-word)
                          (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
                          (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state)
                          (define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state)
                          ))
+
+(evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
+                      

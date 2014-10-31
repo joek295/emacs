@@ -183,7 +183,6 @@ total text each character is used."
   (interactive)
   (shell-command (format "%s%s" "fran " (buffer-file-name))))
 
-(setq my-input-method 1) ; we start in TeX mode. This variable is for the toggle-input-method command
 (defun my-toggle-input-method ()
   "Toggle between TeX and Greek inputs.
 
@@ -192,21 +191,10 @@ TeX.  Remember that TeX can most of the time be used in exactly
 the same way as British; only when writing LaTeX escapes, for
 example when editing a LaTeX document, do you have to remember to
 run toggle-input-method (C-\)."
-
   (interactive)
-  (if (= my-input-method 1)
-      (progn
+  (if (equal current-input-method "TeX")
         (set-input-method "greek")
-        (setq my-input-method -1))
-    (set-input-method "TeX")
-    (setq my-input-method 1)))
-
-(defun current-input-method-string ()
-  "Return a string with the name of the current input method."
-  (interactive)
-  (if (= my-input-method 1)
-      (setq my-input-method-string "TeX")
-    (setq my-input-method-string "Greek")))
+    (set-input-method "TeX")))
 
 (defun newline-below ()
   "create an empty line below the point."
