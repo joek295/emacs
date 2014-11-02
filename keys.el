@@ -31,9 +31,6 @@
 ; prog-mode keys:
 (define-key prog-mode-map (kbd "C-c i") 'indent-buffer)
 
-; dired mode keys
-;(define-key dired-by-name-mode-map "q" 'kill-active-buffer)
-
 ; Evil leader keys
 (eval-after-load 'evil-leader
   (evil-leader/set-key
@@ -58,4 +55,5 @@
                          ))
 
 (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
-                      
+(evil-define-key 'normal eww-mode-map "j" (lambda () (interactive) (ignore-errors (next-line 5))))
+(evil-define-key 'normal eww-mode-map "k" (lambda () (interactive) (ignore-errors (previous-line 5))))

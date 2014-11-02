@@ -11,7 +11,10 @@
   "Functions to call when entering Fortunate Mode")
 
 (define-derived-mode fortunate-mode text-mode "Fortunate"
-  "Major mode for editing fortune files."
+  "Major mode for editing fortune files.
+
+Special commands:
+\\{fortunate-mode-map}"
   (kill-all-local-variables)
   (text-mode)
   (setq major-mode 'fortunate-mode)
@@ -27,11 +30,13 @@
   (defalias 'forward-fortune 'forward-page)
   (defalias 'narrow-to-fortune 'narrow-to-page)
   (defalias 'what-fortune 'what-page) 
-  (defadvice save-buffer (after fortunes-recompile-now activate)
-    "Recompile fortunes file after saving."
-    (fortune-compile (buffer-file-name)))
   )
 
+(defun fortunate-save ()
+  "Save and recompile file."
+  (interactive)
+  (save-buffer)
+  (fortune-compile (buffer-file-name)))
 
 (defun count-fortunes ()
   "Count the number of fortunes in the buffer."
@@ -41,5 +46,11 @@
       (widen)
       (goto-char (point-min))
       (prin1 (count-matches '"^%") t))))
+
+(define-key fortunate-mode-map "\C-x\C-s" 'fortunate-save)
+(define-key fortunate-mode-map "\C-xnf" 'narrow-to-fortune)
+(define-key fortunate-mode-map "\C-x[" 'backward-fortune)
+(define-key fortunate-mode-map "\C-x]" 'forward-fortune)
+(define-key fortunate-mode-map "\C-c\C-w" 'what-fortune)
 
 (provide 'fortunate)

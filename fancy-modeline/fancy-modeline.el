@@ -41,7 +41,7 @@ Code taken from /u/ijustwantanfingname on /r/emacs.
 
 http://reddit.com/r/emacs/2hhhvg"
   (eq
-   (frame-selected-window)
+   (selected-window)
    (get-buffer-window)))
 
 (setq my-mode-line-position
@@ -53,44 +53,34 @@ http://reddit.com/r/emacs/2hhhvg"
 
 (setq my-mode-line-modified
       '(:eval (when (buffer-modified-p)
-                (concat (propertize "|" 'face 'mode-line-standard-face)
-                        (propertize "[ + ]" 'face 'mode-line-modified-face)))))
+                (propertize "[ + ]" 'face 'mode-line-modified-face))))
 
 (setq my-mode-line-modename
-      '(:eval (concat (propertize " %m " 'face 'mode-line-bold-face)
-                      (propertize "|" 'face 'mode-line-standard-face))))
+      '(:eval (propertize " %m " 'face 'mode-line-bold-face)))
+              
 
 (setq my-mode-line-buffname
-      '(:eval (concat (propertize " %b " 'face 'mode-line-bold-face)
-                      (propertize "|" 'face 'mode-line-standard-face))))
+      '(:eval (propertize " %b " 'face 'mode-line-bold-face)))
 
 (setq my-mode-line-evilstate
-      '(:eval (cond ((evil-insert-state-p) (concat (propertize " INSERT " 'face 'mode-line-insert-face)
-                                                   (propertize "|" 'face 'mode-line-standard-face)))
-                    ((evil-normal-state-p) (concat (propertize " NORMAL " 'face 'mode-line-normal-face)
-                                                   (propertize "|" 'face 'mode-line-standard-face)))
-                    ((evil-emacs-state-p) (concat (propertize "  EMACS " 'face 'mode-line-emacs-face)
-                                                  (propertize "|" 'face 'mode-line-standard-face)))
-                    ((evil-replace-state-p) (concat (propertize " REPLACE " 'face 'mode-line-insert-face)
-                                                    (propertize "|" 'face 'mode-line-standard-face)))
-                    ((evil-visual-state-p) (concat (propertize " VISUAL " 'face 'mode-line-visual-face)
-                                                   (propertize "|" 'face 'mode-line-standard-face))))))
+      '(:eval (cond ((evil-insert-state-p) (propertize " I " 'face 'mode-line-insert-face))
+                    ((evil-normal-state-p) (propertize " N " 'face 'mode-line-normal-face))
+                    ((evil-emacs-state-p) (propertize " E " 'face 'mode-line-emacs-face))
+                    ((evil-replace-state-p) concat (propertize " R " 'face 'mode-line-insert-face))
+                    ((evil-visual-state-p) (propertize " V " 'face 'mode-line-visual-face)))))
+
 
 (setq my-mode-line-active
       '(:eval (when (window-active-p)
-                (concat (propertize "ACTIVE" 'face 'mode-line-active-face)
-                        (propertize "|" 'face 'mode-line-standard-face)))))
+                (propertize " A " 'face 'mode-line-active-face))))
 
 (setq my-mode-line-input
-      '(:eval (concat (propertize "|" 'face 'mode-line-standard-face)
-                      (propertize (message current-input-method) 'face 'mode-line-standard-face))))
+     '(:eval (propertize (message current-input-method) 'face 'mode-line-standard-face)))
 
 (setq my-mode-line-overwrite
       '(:eval (if overwrite-mode
-                  (concat (propertize "|" 'face 'mode-line-standard-face)
-                          (propertize "OVR" 'face 'mode-line-emacs-face))
-                (concat (propertize "|" 'face 'mode-line-standard-face)
-                        (propertize "INS" 'face 'mode-line-standard-face)))))
+                  (propertize "OVR" 'face 'mode-line-emacs-face)
+                (propertize "INS" 'face 'mode-line-standard-face))))
 
 (setq-default mode-line-format
               (list
@@ -102,7 +92,7 @@ http://reddit.com/r/emacs/2hhhvg"
                my-mode-line-modified
                my-mode-line-readonly
                my-mode-line-overwrite
-               my-mode-line-input
+;               my-mode-line-input
                ))
 
 (provide 'fancy-modeline)

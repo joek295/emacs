@@ -28,6 +28,8 @@ it can be used without it.
 
 * Overwrite indicator
 
+* Indicator for current insert method
+
 ## Future Features:
 
 Features which may be implemented in the future include:
@@ -40,7 +42,7 @@ Features which may be implemented in the future include:
 
 ## Installation:
 
-1. Download fancy-modeline:
+1. Download fancy-modeline
 
 2. Add to your init.el:
 

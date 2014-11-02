@@ -72,6 +72,12 @@
   (when evil-mode
     (evil-normal-state)))
 
+;; magit mode
+(defadvice magit-status (around magit-fullscreen activate)
+  "Open magit-status in fullscreen rather than splitting into two windows."
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
 
 ;; flyspell mode
 (defun my-save-word ()
@@ -98,6 +104,7 @@
         "http://elsiewrites.wordpress.com/feed/"
         "http://www.atomicnerds.com/?feed=rss2"
         "http://adventuresinolomouc.blogspot.com/feeds/posts/default?alt=rss"
+        "http://samreadsatlasshrugged.wordpress.com/feed/"
         "http://feeds.feedburner.com/PagingDrNerdlove"))
 
 ;; mode hooks
@@ -126,3 +133,4 @@
 (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'calendar-mode-hook (lambda () (evil-local-mode -1)))
+(add-hook 'eww-mode-hook (lambda () (linum-mode -1)))

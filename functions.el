@@ -104,10 +104,9 @@ online, though I can't remember where."
 
 ;; File Manipulation
 
+; taken from Steve Yegge's blog.
 (defun rename-file-and-buffer (new-name)
-  "Rename both current buffer and file it's visiting to NEW-NAME.
-
-Function taken from Steve Yegge's blog."
+  "Rename both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
@@ -121,10 +120,9 @@ Function taken from Steve Yegge's blog."
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil)))))) 
 
-(defun move-buffer-file (dir)
-  "Move both current buffer and file it's visiting to DIR.
-
-Function taken from Steve Yegge's blog."
+; taken from Steve Yegge's blog.
+(defun move-file-and-buffer (dir)
+  "Move both current buffer and file it's visiting to DIR."
   (interactive "DNew directory: ")
   (let* ((name (buffer-name))
          (filename (buffer-file-name))
@@ -140,16 +138,28 @@ Function taken from Steve Yegge's blog."
         (set-visited-file-name newname)
         (set-buffer-modified-p nil) t))))
 
+; Taken from What the Emacs.d?!
+(defun delete-file-and-buffer ()
+  "Removes file connected to current buffer and kills buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+        (buffer (current-buffer))
+        (name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (ido-kill-buffer)
+      (when (yes-or-no-p "Are you sure you want to remove this file? ")
+        (delete-file filename)
+        (kill-buffer buffer)
+        (message "File '%s' successfully removed" filename)))))
+
 ;; Coding
 
-(defun fc-eval-and-replace ()
+; Taken from emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere"
+(defun eval-and-replace ()
   "Replace the preceding sexp with its value.
 
 If the sexp throws an error, do not replace the
-expression. Simply give an error message.
-
-Taken from
-emacs.wordpress.com/2007/01/17/eval-and-replace-anywhere"
+expression. Simply give an error message."
   (interactive)
   (backward-kill-sexp)
   (condition-case nil
