@@ -66,7 +66,7 @@ http://reddit.com/r/emacs/2hhhvg"
       '(:eval (cond ((evil-insert-state-p) (propertize " I " 'face 'mode-line-insert-face))
                     ((evil-normal-state-p) (propertize " N " 'face 'mode-line-normal-face))
                     ((evil-emacs-state-p) (propertize " E " 'face 'mode-line-emacs-face))
-                    ((evil-replace-state-p) concat (propertize " R " 'face 'mode-line-insert-face))
+                    ((evil-replace-state-p) (propertize " R " 'face 'mode-line-insert-face))
                     ((evil-visual-state-p) (propertize " V " 'face 'mode-line-visual-face)))))
 
 
@@ -85,7 +85,7 @@ http://reddit.com/r/emacs/2hhhvg"
 (setq-default mode-line-format
               (list
                my-mode-line-evilstate
-               my-mode-line-active
+;               my-mode-line-active
                my-mode-line-buffname
                my-mode-line-modename
                my-mode-line-position

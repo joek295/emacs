@@ -4,10 +4,6 @@
 ;; includes mode-hooks for loading minor modes, advice for mode
 ;; functions, and suchlike.
 
-; fix evil mode so that <tab> works as expected in org mode: this is
-; required to come before (require 'evil) for some reason
-;(setq evil-want-C-i-jump nil)
-
 ; load the needed mode files
 (require 'color-theme)
 (require 'color-theme-solarized)
@@ -26,9 +22,10 @@
 (evil-mode 1)
 (auto-compression-mode 1)
 
-; which major mode to load: default to text mode, use fortunate mode
-; in files which end in the string 'fortunes', and always use LaTeX
-; mode for .tex files: I don't write other TeX dialects
+; which major mode to load:
+; text-mode should be default; the .vimrc file should open in
+; viml-mode; all .tex files should open in latex-mode; all files
+; ending in "fortunes" should open in fortunate-mode
 (setq default-major-mode 'text-mode)
 (setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\NEWS$" . shortlines-mode) auto-mode-alist))
@@ -36,6 +33,7 @@
 (setq auto-mode-alist (cons '("\\Readme" . shortlines-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\readme" . shortlines-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.vimrc$" . viml-mode) auto-mode-alist))
 
 ;; ido mode
 (setq ido-enable-flex-matching t)
@@ -108,29 +106,50 @@
         "http://feeds.feedburner.com/PagingDrNerdlove"))
 
 ;; mode hooks
+; after-init-hook
+(defun my-after-init-hook ()
+  "Run after init."
+  )
+;(add-hook 'after-init-hook 'my-after-init-hook)
+
 ; prog mode
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook 'hl-line-mode)
+(defun my-prog-mode-hook ()
+  "Run when entering any mode inheriting from prog-mode"
+  (flyspell-prog-mode)
+  (rainbow-delimiters-mode)
+  (hl-line-mode))
+(add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
 ; org mode
-(add-hook 'org-mode-hook 'flyspell-mode)
-(add-hook 'org-mode-hook (lambda () (toggle-truncate-lines -1)))
+(defun my-org-mode-hook ()
+  "Run when entering org-mode"
+  (flyspell-mode)
+  (toggle-truncate-lines -1))
+(add-hook 'org-mode-hook 'my-org-mode-hook)
 
 ; text mode
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 ; tex mode
-(add-hook 'tex-mode-hook 'refill-mode)
 (add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
 
 ; magit modes
-(add-hook 'magit-mode-hook (lambda () (evil-local-mode -1)))
 (add-hook 'magit-log-edit-mode-hook 'refill-mode)
 
+; lisp modes
+(defun my-lisp-mode-hook ()
+  "Run when entering lisp-interaction-mode or emacs-lisp-mode"
+  (eldoc-mode)
+  (push '(">=" . ?≥) prettify-symbols-alist)
+  (push '("<=" . ?≤) prettify-symbols-alist)
+  (push '("==" . ?≡) prettify-symbols-alist)
+  (prettify-symbols-mode))
+
+(add-hook 'lisp-interaction-mode-hook 'my-lisp-mode-hook)
+(add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
+
 ; misc modes
-(add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'calendar-mode-hook (lambda () (evil-local-mode -1)))
 (add-hook 'eww-mode-hook (lambda () (linum-mode -1)))
+(add-hook 'elfeed-mode-hook 'my-elfeed-search-keys)

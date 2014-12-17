@@ -13,6 +13,7 @@
 
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
+(autoload 'viml-mode "viml")
 (load "functions.el")
 (load "keys.el")
 (load "my-config.el")

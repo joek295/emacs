@@ -16,3 +16,5 @@ My emacs configurations under source control. This includes:
 
 * fancy-modeline -- my modeline, based off of Luke Maciak's
   vim-neatstatus
+
+* fortunate.el -- a major mode for files compatible with GNU Fortunes

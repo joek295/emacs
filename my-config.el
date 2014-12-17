@@ -33,3 +33,7 @@
 (defvaralias 'cperl-indent-level 'tab-width) 
 (defalias 'yes-or-no-p 'y-or-n-p) 
 (defalias 'list-buffers 'ibuffer) 
+
+; navigate windows using Shift-arrow
+(when (fboundp 'windmove-default-keybindings)
+    (windmove-default-keybindings))
