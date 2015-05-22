@@ -48,6 +48,7 @@
 (eval-after-load 'evil (progn
                          (define-key evil-normal-state-map "L" 'evil-end-of-line)
                          (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
+                         (define-key evil-normal-state-map "Y" 'evil-yank-to-eol)
                          (define-key evil-normal-state-map "zg" 'my-save-word)
                          (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
                          (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)

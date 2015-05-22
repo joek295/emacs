@@ -223,3 +223,10 @@ run toggle-input-method (C-\)."
 ;(defun latex-emphasise-word ()
 ;  "surround the word under the point with \emph{}."
 ;  )
+
+(defun evil-yank-to-eol ()
+  "Yank to end-of-line in evil mode.  Useful for making the
+  behaviour of Y sane, i.e. analagous to D, C etc., and not the
+  same as yy."
+  (interactive)
+  (evil-yank (point) (point-at-eol)))
