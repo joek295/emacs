@@ -71,9 +71,11 @@
     (evil-normal-state)))
 
 ;; magit mode
+; taken from what the emacsd!?
 (defadvice magit-status (around magit-fullscreen activate)
   "Open magit-status in fullscreen rather than splitting into two windows."
   (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
   (delete-other-windows))
 
 ;; flyspell mode
