@@ -18,9 +18,9 @@
 (menu-bar-mode 0)
 (global-linum-mode 1)
 (ido-mode t)
+(auto-compression-mode 1)
 (global-evil-leader-mode)
 (evil-mode 1)
-(auto-compression-mode 1)
 
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
@@ -145,6 +145,7 @@
 
 ; magit modes
 (add-hook 'magit-log-edit-mode-hook 'refill-mode)
+(add-hook 'magit-status-mode-hook (lambda () (evil-local-mode 1)))
 
 ; lisp modes
 (defun my-lisp-mode-hook ()

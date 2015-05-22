@@ -46,6 +46,8 @@
 
 ; Evil mode keys
 (eval-after-load 'evil (progn
+                         (define-key evil-normal-state-map (kbd "<left>") 'switch-to-prev-buffer)
+                         (define-key evil-normal-state-map (kbd "<right>") 'switch-to-next-buffer)
                          (define-key evil-normal-state-map "L" 'evil-end-of-line)
                          (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
                          (define-key evil-normal-state-map "Y" 'evil-yank-to-eol)
@@ -85,6 +87,7 @@
   "j" 'ibuffer-forward-line
   "k" 'ibuffer-backward-line
   "l" 'ibuffer-visit-buffer
+  "U" 'ibuffer-unmark-backward
   "/" 'ibuffer-jump-to-buffer
   )
 
