@@ -101,6 +101,8 @@
   "TAB" 'magit-toggle-section
   "g" 'magit-refresh
   "G" 'magit-refresh-all
+  "s" 'magit-stage-item
+  "S" 'magit-stage-all
   "?" 'magit-describe-item
   ":" 'magit-git-command
   "RET" 'magit-visit-item
