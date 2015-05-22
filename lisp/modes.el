@@ -95,7 +95,7 @@
         "http://kmandla.wordpress.com/feed/"
         "http://debianjoe.wordpress.com/feed/"
         "http://inconsolation.wordpress.com/feed/"
-        "http://foodthroughthepages.com/feed/"
+        "http://foodthroughthepages.wordpress.com/feed/"
         "http://thepaternaldrunk.com/feed/"
         "http://pervocracy.blogspot.com/feeds/posts/default"
         "http://captainawkward.com/feed/"
@@ -103,7 +103,15 @@
         "http://www.atomicnerds.com/?feed=rss2"
         "http://adventuresinolomouc.blogspot.com/feeds/posts/default?alt=rss"
         "http://samreadsatlasshrugged.wordpress.com/feed/"
+        "http://sexgeek.wordpress.com/feed"
         "http://feeds.feedburner.com/PagingDrNerdlove"))
+
+;; (add-hook 'elfeed-new-entry-hook
+;;           (elfeed-make-tagger :entry-title '("Open Thread")
+;;                               :remove 'unread)
+;;           (elfeed-make-tagger :entry-title '("Meetup")
+;;                               :remove 'unread)
+;;           )
 
 ;; mode hooks
 ; after-init-hook

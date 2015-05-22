@@ -191,7 +191,7 @@ on non-user buffers e.g. *scratch*).
 Should also implement something telling us the percentage of the
 total text each character is used."
   (interactive)
-  (shell-command (format "%s%s" "~/scripts/fran " (buffer-file-name))))
+  (shell-command (format "%s%s" "fran " (buffer-file-name))))
 
 (defun my-toggle-input-method ()
   "Toggle between TeX and Greek inputs.
@@ -219,3 +219,7 @@ run toggle-input-method (C-\)."
   (save-excursion
     (beginning-of-line)
     (newline)))
+
+;(defun latex-emphasise-word ()
+;  "surround the word under the point with \emph{}."
+;  )

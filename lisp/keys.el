@@ -40,6 +40,7 @@
     "O" 'newline-above
     "d" 'dired
     "g" 'magit-status
+    ;; "i" 'latex-emphasise-word
     "#" 'comment-or-uncomment-region)
   )
 
@@ -80,6 +81,13 @@
   )
 
 (evil-define-key 'normal ibuffer-mode-map
+  "j" 'ibuffer-forward-line
+  "k" 'ibuffer-backward-line
+  "l" 'ibuffer-visit-buffer
+  "/" 'ibuffer-jump-to-buffer
+  )
+
+(evil-define-key 'emacs ibuffer-mode-map
   "j" 'ibuffer-forward-line
   "k" 'ibuffer-backward-line
   "l" 'ibuffer-visit-buffer
