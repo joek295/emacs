@@ -17,11 +17,47 @@
                (evil-set-initial-state 'magit-status-mode 'normal)
                (evil-set-initial-state 'magit-diff-mode 'normal)
                (evil-set-initial-state 'magit-log-mode 'normal)
+               ;; Advice taken from what the emacsd!?
+               (defadvice magit-status (around magit-fullscreen activate)
+                 "Open magit-status in fullscreen rather than splitting into two windows."
+                 (window-configuration-to-register :magit-fullscreen)
+                 ad-do-it
+                 (delete-other-windows))
+                (add-hook 'magit-log-edit-mode-hook 'refill-mode)
+               ;; Magit keybindings with evil mode
+               (evil-define-key 'normal magit-mode-map
+                 "j" 'magit-goto-next-section
+                 "k" 'magit-goto-previous-section
+                 "TAB" 'magit-toggle-section
+                 "g" 'magit-refresh
+                 "G" 'magit-refresh-all
+                 "s" 'magit-stage-item
+                 "S" 'magit-stage-all
+                 "?" 'magit-describe-item
+                 ":" 'magit-git-command
+                 "RET" 'magit-visit-item
+                 "t" 'magit-key-mode-popup-tagging
+                 "r" 'magit-key-mode-popup-rewriting
+                 "P" 'magit-key-mode-popup-pushing
+                 "f" 'magit-key-mode-popup-fetching
+                 "b" 'magit-key-mode-popup-branching
+                 "M" 'magit-key-mode-popup-remoting
+                 "B" 'magit-key-mode-popup-bisecting
+                 "F" 'magit-key-mode-popup-pulling
+                 "l" 'magit-key-mode-popup-logging
+                 "c" 'magit-log-edit
+                 "q" 'magit-quit-window
+                 "d" 'magit-diff-working-tree
+                 "D" 'magit-diff)
                ))
 
-(autoload 'rainbow-delimiters-mode "rainbow-delimiters")
+(use-package rainbow-delimiters
+  :ensure t
+  :config (progn
+            (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+            ))
 
-(electric-pair-mode)
+(electric-pair-mode 1)
 (column-number-mode 1)
 (menu-bar-mode 0)
 (global-linum-mode 1)
@@ -63,14 +99,6 @@
                 (if (looking-back "/")
                     (insert "~/")
                   (call-interactively 'self-insert-command))))))
-
-;; magit mode
-; taken from what the emacsd!?
-(defadvice magit-status (around magit-fullscreen activate)
-  "Open magit-status in fullscreen rather than splitting into two windows."
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
 
 ;; flyspell mode
 (defun my-save-word ()
@@ -119,7 +147,7 @@
 (defun my-prog-mode-hook ()
   "Run when entering any mode inheriting from prog-mode"
   (flyspell-prog-mode)
-  (rainbow-delimiters-mode)
+  ;(rainbow-delimiters-mode)
   (hl-line-mode))
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
@@ -138,7 +166,6 @@
 (add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
 
 ; magit modes
-(add-hook 'magit-log-edit-mode-hook 'refill-mode)
 (add-hook 'magit-status-mode-hook (lambda () (evil-local-mode 1)))
 
 ; lisp modes
