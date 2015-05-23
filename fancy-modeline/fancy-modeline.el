@@ -45,7 +45,7 @@ http://reddit.com/r/emacs/2hhhvg"
    (get-buffer-window)))
 
 (setq my-mode-line-position
-      '(:eval (propertize "[%p: L%02l, C%02c]" 'face 'mode-line-position-face)))
+      '(:eval (propertize "[%p: L%02l C%02c]" 'face 'mode-line-position-face)))
 
 (setq my-mode-line-readonly
       '(:eval (when buffer-read-only

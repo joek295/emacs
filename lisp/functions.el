@@ -230,3 +230,12 @@ run toggle-input-method (C-\)."
   same as yy."
   (interactive)
   (evil-yank (point) (point-at-eol)))
+
+(defun my-dired-up-directory ()
+  "Dired up directory and kill old dired buffer.
+From Nathan Typanski's blogpost 'Towards a vim-like emacs config'."
+  (interactive)
+  (let ((old (current-buffer)))
+    (dired-up-directory)
+    (kill-buffer old)
+    ))

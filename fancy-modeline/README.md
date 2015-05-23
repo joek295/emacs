@@ -46,6 +46,6 @@ Features which may be implemented in the future include:
 
 2. Add to your init.el:
 
-(require 'fancy-modeline)
+    (require 'fancy-modeline)
 
 3. Profit

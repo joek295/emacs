@@ -13,6 +13,12 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/fancy-modeline")
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
@@ -25,3 +31,4 @@
 (load custom-file)
 
 ;;; end
+(put 'dired-find-alternate-file 'disabled nil)

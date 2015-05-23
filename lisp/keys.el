@@ -38,7 +38,9 @@
     "j" 'open-line
     "o" 'newline-below
     "O" 'newline-above
+    ;; Modes:
     "d" 'dired
+    "b" 'ibuffer
     "g" 'magit-status
     ;; "i" 'latex-emphasise-word
     "#" 'comment-or-uncomment-region)
@@ -79,8 +81,10 @@
 
 (evil-define-key 'normal dired-mode-map
   "l" 'dired-find-alternate-file
-  "h" 'dired-up-directory
+  "h" 'my-dired-up-directory
   "q" 'kill-this-buffer
+  "n" 'evil-search-next
+  "N" 'evil-search-previous
   )
 
 (evil-define-key 'normal ibuffer-mode-map
