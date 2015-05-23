@@ -32,7 +32,8 @@
 (defface mode-line-modified-face `((t (:foreground "black" :weight bold :background "magenta"))) "Black on magenta for modified indicator")
 (defface mode-line-readonly-face `((t (:foreground "black" :weight bold :background "violet"))) "Black on violet for RO indicator")
 
-(set-face-background 'mode-line "black")
+(set-face-background 'mode-line "white")
+(set-face-background 'mode-line-inactive "black")
 
 (defun window-active-p ()
   "Return true if window is active.
