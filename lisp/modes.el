@@ -19,6 +19,15 @@
              :init
              (global-evil-leader-mode)
              )
+(use-package magit
+             :ensure magit
+             :config
+             (progn
+               (evil-set-initial-state 'magit-mode 'normal)
+               (evil-set-initial-state 'magit-status-mode 'normal)
+               (evil-set-initial-state 'magit-diff-mode 'normal)
+               (evil-set-initial-state 'magit-log-mode 'normal)
+               ))
 
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters")
 
