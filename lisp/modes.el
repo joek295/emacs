@@ -8,50 +8,6 @@
 (require 'color-theme)
 (require 'color-theme-solarized)
 (require 'fancy-modeline)
-(require 'ido)
-(use-package magit
-             :ensure magit
-             :config
-             (progn
-               (evil-set-initial-state 'magit-mode 'normal)
-               (evil-set-initial-state 'magit-status-mode 'normal)
-               (evil-set-initial-state 'magit-diff-mode 'normal)
-               (evil-set-initial-state 'magit-log-mode 'normal)
-               ;; Advice taken from what the emacsd!?
-               (defadvice magit-status (around magit-fullscreen activate)
-                 "Open magit-status in fullscreen rather than splitting into two windows."
-                 (window-configuration-to-register :magit-fullscreen)
-                 ad-do-it
-                 (delete-other-windows))
-                (add-hook 'magit-log-edit-mode-hook 'refill-mode)
-               ;; Magit keybindings with evil mode
-               (evil-define-key 'normal magit-mode-map
-                 "j" 'magit-goto-next-section
-                 "k" 'magit-goto-previous-section
-                 "TAB" 'magit-toggle-section
-                 "g" 'magit-refresh
-                 "G" 'magit-refresh-all
-                 "s" 'magit-stage-item
-                 "S" 'magit-stage-all
-                 "i" 'magit-ignore-item
-                 "?" 'magit-describe-item
-                 ":" 'magit-git-command
-                 "RET" 'magit-visit-item
-                 "t" 'magit-key-mode-popup-tagging
-                 "r" 'magit-key-mode-popup-rewriting
-                 "P" 'magit-key-mode-popup-pushing
-                 "f" 'magit-key-mode-popup-fetching
-                 "b" 'magit-key-mode-popup-branching
-                 "M" 'magit-key-mode-popup-remoting
-                 "B" 'magit-key-mode-popup-bisecting
-                 "F" 'magit-key-mode-popup-pulling
-                 "l" 'magit-key-mode-popup-logging
-                 "c" 'magit-log-edit
-                 "q" 'magit-quit-window
-                 "d" 'magit-diff-working-tree
-                 "D" 'magit-diff)
-               ))
-
 (use-package rainbow-delimiters
   :ensure t
   :config (progn
@@ -76,33 +32,6 @@
 (setq auto-mode-alist (cons '("\\readme" . shortlines-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.vimrc$" . viml-mode) auto-mode-alist))
-
-;; ido mode
-(use-package ido
-  :config (progn
-            (ido-mode t)
-            (ido-everywhere t)
-            (setq ido-enable-flex-matching t)
-            (setq ido-ignore-files)
-            (add-to-list 'ido-ignore-files "\.pdf")
-            (defun ido-ignore-non-user-except (name)
-              "Ignore all non-user (*starred*) buffers except certain ones."
-              (and (string-match "^\*" name)
-                   (not (string= name "*magit-edit-log*"))))
-            (setq ido-ignore-buffers '("\\` " ido-ignore-non-user-except))
-            (setq ido-create-new-buffer 'always)
-            (add-hook 'ido-setup-hook
-                      (lambda ()
-                        "When typing '~' in ido-find-file, go to the home directory."
-                        (define-key ido-file-completion-map
-                          (kbd "~")
-                          (lambda ()
-                            (interactive)
-                            (if (looking-back "/")
-                                (insert "~/")
-                              (call-interactively 'self-insert-command))))))))
-
-
 
 ;; flyspell mode
 (defun my-save-word ()

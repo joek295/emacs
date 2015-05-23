@@ -23,10 +23,12 @@
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
 (load "my-evil.el")
+(load "my-magit.el")
+(load "my-ido.el")
+(load "modes.el")
 (load "functions.el")
 (load "keys.el")
 (load "my-config.el")
-(load "modes.el")
 ; M-x customize saves its configurations in the file 'custom-file'
 (setq custom-file "~/.emacs.d/lisp/my-custom.el")
 (load custom-file)
