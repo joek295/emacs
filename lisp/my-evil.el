@@ -108,6 +108,7 @@
               "j" 'ibuffer-forward-line
               "k" 'ibuffer-backward-line
               "l" 'ibuffer-visit-buffer
+              "U" 'ibuffer-unmark-backward
               "/" 'ibuffer-jump-to-buffer
               )
             ))
