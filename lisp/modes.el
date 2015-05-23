@@ -38,7 +38,14 @@
 ;; ido mode
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
-(setq ido-ignore-buffers '("\\` " "^\*"))
+
+(defun ido-ignore-non-user-except (name)
+    "Ignore all non-user (a.k.a. *starred*) buffers except certain ones."
+      (and (string-match "^\*" name)
+                  (not (string= name "*magit-edit-log*"))))
+(setq ido-ignore-buffers '("\\` " ido-ignore-non-user-except))"'"))
+(setq ido-ignore-files)
+(add-to-list 'ido-ignore-files "\.pdf")
 (setq ido-create-new-buffer 'always)
 (add-hook 'ido-setup-hook
           (lambda ()
