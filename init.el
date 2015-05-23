@@ -22,6 +22,7 @@
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
+(load "my-evil.el")
 (load "functions.el")
 (load "keys.el")
 (load "my-config.el")

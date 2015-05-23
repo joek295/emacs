@@ -9,16 +9,6 @@
 (require 'color-theme-solarized)
 (require 'fancy-modeline)
 (require 'ido)
-(use-package evil-leader
-             :ensure evil-leader
-             :demand evil-leader
-             :init
-             (global-evil-leader-mode)
-             )
-(use-package evil
-             :ensure evil
-             :demand evil
-             )
 (use-package magit
              :ensure magit
              :config
@@ -37,7 +27,6 @@
 (global-linum-mode 1)
 (ido-mode t)
 (auto-compression-mode 1)
-(evil-mode 1)
 
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
@@ -74,25 +63,6 @@
                 (if (looking-back "/")
                     (insert "~/")
                   (call-interactively 'self-insert-command))))))
-
-;; evil mode
-(defadvice evil-goto-line (after evil-goto-line-and-center activate)
-  "When using the goto line command ('G'), try to center the line"
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(defadvice evil-ex-search-next (after evil-find-key-and-center activate)
-  "When using the search next command ('n'), try to center the line"
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(defadvice switch-to-buffer (before return-to-normal-now activate)
-  "Return to normal mode before switching buffer"
-  (when evil-mode
-    (evil-normal-state)))
-
-(defadvice other-window (before other-window-normal-now activate)
-  "Return to normal mode before switching window"
-  (when evil-mode
-    (evil-normal-state)))
 
 ;; magit mode
 ; taken from what the emacsd!?
