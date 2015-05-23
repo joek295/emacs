@@ -33,6 +33,7 @@
                  "G" 'magit-refresh-all
                  "s" 'magit-stage-item
                  "S" 'magit-stage-all
+                 "i" 'magit-ignore-item
                  "?" 'magit-describe-item
                  ":" 'magit-git-command
                  "RET" 'magit-visit-item

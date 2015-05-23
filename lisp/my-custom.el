@@ -24,8 +24,9 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "black"))))
  '(linum ((t (:inherit (shadow default) :background "black"))))
+ '(magit-section-title ((t (:inherit magit-header :foreground "brightcyan"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "red" :weight bold))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "orange" :weight bold))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "brightred" :weight bold))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "yellow" :weight bold))))
  '(rainbow-delimiters-depth-4-face ((t (:foreground "green" :weight bold))))
  '(rainbow-delimiters-depth-5-face ((t (:foreground "blue" :weight bold))))
