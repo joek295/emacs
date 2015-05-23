@@ -9,15 +9,15 @@
 (require 'color-theme-solarized)
 (require 'fancy-modeline)
 (require 'ido)
-
-(use-package evil
-             :ensure evil
-             :demand evil)
 (use-package evil-leader
              :ensure evil-leader
              :demand evil-leader
              :init
              (global-evil-leader-mode)
+             )
+(use-package evil
+             :ensure evil
+             :demand evil
              )
 (use-package magit
              :ensure magit
