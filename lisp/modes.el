@@ -61,7 +61,6 @@
 (column-number-mode 1)
 (menu-bar-mode 0)
 (global-linum-mode 1)
-(ido-mode t)
 (auto-compression-mode 1)
 
 ; which major mode to load:
@@ -78,27 +77,31 @@
 (setq auto-mode-alist (cons '("\\.vimrc$" . viml-mode) auto-mode-alist))
 
 ;; ido mode
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+(use-package ido
+  :config (progn
+            (ido-mode t)
+            (ido-everywhere t)
+            (setq ido-enable-flex-matching t)
+            (setq ido-ignore-files)
+            (add-to-list 'ido-ignore-files "\.pdf")
+            (defun ido-ignore-non-user-except (name)
+              "Ignore all non-user (*starred*) buffers except certain ones."
+              (and (string-match "^\*" name)
+                   (not (string= name "*magit-edit-log*"))))
+            (setq ido-ignore-buffers '("\\` " ido-ignore-non-user-except))
+            (setq ido-create-new-buffer 'always)
+            (add-hook 'ido-setup-hook
+                      (lambda ()
+                        "When typing '~' in ido-find-file, go to the home directory."
+                        (define-key ido-file-completion-map
+                          (kbd "~")
+                          (lambda ()
+                            (interactive)
+                            (if (looking-back "/")
+                                (insert "~/")
+                              (call-interactively 'self-insert-command))))))))
 
-(defun ido-ignore-non-user-except (name)
-    "Ignore all non-user (*starred*) buffers except certain ones."
-      (and (string-match "^\*" name)
-                  (not (string= name "*magit-edit-log*"))))
-(setq ido-ignore-buffers '("\\` " ido-ignore-non-user-except))"'"))
-(setq ido-ignore-files)
-(add-to-list 'ido-ignore-files "\.pdf")
-(setq ido-create-new-buffer 'always)
-(add-hook 'ido-setup-hook
-          (lambda ()
-            "When typing '~' in ido-find-file, go to the home directory."
-            (define-key ido-file-completion-map
-              (kbd "~")
-              (lambda ()
-                (interactive)
-                (if (looking-back "/")
-                    (insert "~/")
-                  (call-interactively 'self-insert-command))))))
+
 
 ;; flyspell mode
 (defun my-save-word ()
@@ -147,7 +150,6 @@
 (defun my-prog-mode-hook ()
   "Run when entering any mode inheriting from prog-mode"
   (flyspell-prog-mode)
-  ;(rainbow-delimiters-mode)
   (hl-line-mode))
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
