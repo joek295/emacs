@@ -40,6 +40,14 @@
 (global-linum-mode 1)
 (auto-compression-mode 1)
 
+(use-package hl-line-mode
+  :ensure t
+  :config (progn
+            (set-face-background hl-line-face "gray20")
+            (add-hook 'prog-mode-hook 'hl-line-mode)
+            )
+  )
+
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
 ; viml-mode; all .tex files should open in latex-mode; all files
@@ -100,7 +108,7 @@
 (defun my-prog-mode-hook ()
   "Run when entering any mode inheriting from prog-mode"
   (flyspell-prog-mode)
-  (hl-line-mode))
+  )
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
 ; org mode
@@ -116,9 +124,6 @@
 
 ; tex mode
 (add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
-
-; magit modes
-(add-hook 'magit-status-mode-hook (lambda () (evil-local-mode 1)))
 
 ; lisp modes
 (defun my-lisp-mode-hook ()
