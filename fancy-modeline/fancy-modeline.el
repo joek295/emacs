@@ -58,6 +58,7 @@
 Code taken from /u/ijustwantanfingname on /r/emacs.
 
 http://reddit.com/r/emacs/2hhhvg"
+  (interactive)
   (eq
    (selected-window)
    (get-buffer-window)))

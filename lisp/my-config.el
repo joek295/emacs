@@ -2,6 +2,10 @@
 
 ;; configuration of Emacs which holds for all modes goes here
 
+; remove tool-bar and scroll-bar modes for GUI versions of emacs
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
 ; disable start-up messages
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-area-message "joe") 
