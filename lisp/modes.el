@@ -40,13 +40,9 @@
 (global-linum-mode 1)
 (auto-compression-mode 1)
 
-(use-package hl-line-mode
-  :ensure t
-  :config (progn
-            (set-face-background hl-line-face "gray20")
-            (add-hook 'prog-mode-hook 'hl-line-mode)
-            )
-  )
+
+(global-hl-line-mode 1)
+(set-face-background hl-line-face "gray20")
 
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
