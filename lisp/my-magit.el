@@ -37,7 +37,7 @@
       "F" 'magit-key-mode-popup-pulling
       "l" 'magit-key-mode-popup-logging
       "c" 'magit-log-edit
-      "q" 'magit-quit-window
+      "q" 'magit-mode-quit-window
       "d" 'magit-diff-working-tree
       "D" 'magit-diff)
     (set-face-attribute 'magit-section-title nil
