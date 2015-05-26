@@ -24,6 +24,8 @@
       "s" 'magit-stage-item
       "S" 'magit-stage-all
       "i" 'magit-ignore-item
+      "c" 'magit-commit 
+      "q" 'magit-mode-quit-window
       "?" 'magit-describe-item
       ":" 'magit-git-command
       "RET" 'magit-visit-item
@@ -36,8 +38,6 @@
       "B" 'magit-key-mode-popup-bisecting
       "F" 'magit-key-mode-popup-pulling
       "l" 'magit-key-mode-popup-logging
-      "c" 'magit-log-edit
-      "q" 'magit-mode-quit-window
       "d" 'magit-diff-working-tree
       "D" 'magit-diff)
     (set-face-attribute 'magit-section-title nil

@@ -8,7 +8,7 @@
 (require 'fancy-modeline)
 
 (global-hl-line-mode 1)
-(set-face-background hl-line-face "gray15")
+(set-face-background hl-line-face "#073642")
 
 ;; customisation for graphical systems
 (when (display-graphic-p)
