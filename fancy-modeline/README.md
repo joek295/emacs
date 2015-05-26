@@ -62,7 +62,11 @@ Features which may be implemented in the future include:
 
 Fancy-Modeline is (hopefully) sensibly configured.  The first 30-odd
 lines define faces for the modeline.  Between their names and
-docstrings, they should be fairly self-explanatory.  
+docstrings, they should be fairly self-explanatory.  It is simple to
+configure any of these to your preferences:
+
+    (set-face-attribute 'mode-line-modified-face nil
+    :foreground "red" :background "green")
 
 Then we define various parts of the modeline: my-modeline-position,
 for instance, is the section which tells us whereabouts in the

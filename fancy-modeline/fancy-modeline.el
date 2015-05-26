@@ -19,38 +19,38 @@
 ;;; Code:
 
 (defface mode-line-standard-face
-  `((t (:foreground "white" :background "black")))
-  "White on black as standard modeline font")
+  `((t (:foreground "#eee8d5" :background "#002b36")))
+  "standard modeline font")
 (defface mode-line-bold-face
-  `((t (:foreground "white" :weight bold :background "black")))
-  "White bold on black for important information")
+  `((t (:foreground "#eee8d5" :weight bold :background "#002b36")))
+  "font for key information such as buffer name")
 (defface mode-line-position-face
-  `((t (:foreground "black" :weight bold :background "white")))
-  "Black on white for position of cursor")
+  `((t (:foreground "#002b36" :weight bold :background "#eee8d5")))
+  "font for cursor position information")
 (defface mode-line-insert-face
-  `((t (:foreground "black" :background "red")))
-  "Red background for insert-state indicator")
+  `((t (:foreground "#002b36" :background "#dc322f")))
+  "font for mode-line insert flag")
 (defface mode-line-normal-face
-  `((t (:foreground "black" :background "blue")))
-  "Blue background for normal-state-indicator")
+  `((t (:foreground "#002b36" :background "#268bd2")))
+  "font for normal-state-flag")
 (defface mode-line-visual-face
-  `((t (:foreground "black" :background "green")))
-  "Green background for visual-state-indicator")
+  `((t (:foreground "#002b36" :background "#859900")))
+  "font for visual-state-flag")
 (defface mode-line-emacs-face
-  `((t (:foreground "black" :background "orange")))
-  "Orange background for emacs-state-indicator")
+  `((t (:foreground "#002b36" :background "#cb4b16")))
+  "font for visual-state flag")
 (defface mode-line-active-face
-  `((t (:foreground "black" :background "cyan")))
-  "Black on cyan for active window")
+  `((t (:foreground "#002b36" :background "#2aa198")))
+  "font for active-state-flag")
 (defface mode-line-modified-face
-  `((t (:foreground "black" :weight bold :background "magenta")))
-  "Black on magenta for modified indicator")
+  `((t (:foreground "#002b36" :weight bold :background "#d33682")))
+  "font for modified flag")
 (defface mode-line-readonly-face
-  `((t (:foreground "black" :weight bold :background "violet")))
-  "Black on violet for RO indicator")
+  `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
+  "font for read-only flag")
 
-(set-face-background 'mode-line "white")
-(set-face-background 'mode-line-inactive "black")
+(set-face-background 'mode-line "#eee8d5")
+(set-face-background 'mode-line-inactive "#002b36")
 
 (defun window-active-p ()
   "Return true if window is active.
