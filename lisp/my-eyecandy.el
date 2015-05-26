@@ -38,6 +38,7 @@
 (progn
   (set-face-attribute 'mode-line-inactive nil :foreground "base03")
   (set-face-attribute 'mode-line nil :foreground "#eee8d5")
+  (set-face-attribute 'linum nil :foreground "white" :background "base03")
   )
 
 (use-package rainbow-delimiters
