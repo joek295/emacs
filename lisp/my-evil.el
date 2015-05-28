@@ -69,34 +69,45 @@
               (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
               (define-key evil-normal-state-map "K" 'my-evil-join-above)
               (define-key evil-normal-state-map "Y" 'evil-yank-to-eol)
+              (define-key evil-normal-state-map "'" 'evil-goto-mark)
+              (define-key evil-normal-state-map "`" 'evil-goto-mark-char)
               (define-key evil-normal-state-map "zg" 'my-save-word)
-              (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error))
+              (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
+              )
+
             ;; Define evil keys in insert state:
             (progn
               (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
+
             ;; Define evil keys in visual state:
             (progn
               (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state))
+
             ;; Define evil keys in replace state:
             (progn
               (define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state))
+
             ;; Define evil keys in normal state when prog-mode is active
             (evil-define-key 'normal prog-mode-map
               (kbd "C-c i") 'indent-buffer
               )
+
             ;; Define evil keys in visual state when prog-mode is active
             (evil-define-key 'visual prog-mode-map
               (kbd "C-c i") 'indent-region
               )
+
             ;; Define evil keys in normal state when org-mode is active
             (evil-define-key 'normal org-mode-map
               (kbd "TAB") 'org-cycle
               )
+
             ;; Define evil keys in normal state when eww-mode is active
             (evil-define-key 'normal eww-mode-map
               "q" 'kill-active-buffer
               (kbd "DEL") 'eww-back-url
               )
+
             ;; Define evil keys in normal state when dired-mode is active
             (evil-define-key 'normal dired-mode-map
               "l" 'dired-find-alternate-file
@@ -105,6 +116,7 @@
               "n" 'evil-search-next
               "N" 'evil-search-previous
               )
+
             ;; Define evil keys in normal state when ibuffer-mode is active
             (evil-define-key 'normal ibuffer-mode-map
               "j" 'ibuffer-forward-line
@@ -113,6 +125,7 @@
               "U" 'ibuffer-unmark-backward
               "/" 'ibuffer-jump-to-buffer
               )
+
             ;; Define evil keys in emacs state when ibuffer-mode is active
             (evil-define-key 'emacs ibuffer-mode-map
               "j" 'ibuffer-forward-line
