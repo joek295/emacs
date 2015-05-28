@@ -4,6 +4,7 @@
              :init
              (global-evil-leader-mode t)
              :config (progn
+                       (evil-leader/set-leader "<SPC>")
                        (evil-leader/set-key
                          "f" 'fill-paragraph
                          "n" 'forward-paragraph
