@@ -51,6 +51,14 @@
               (interactive)
               (evil-yank (point) (point-at-eol)))
 
+            (defun my-evil-join-above ()
+            "Join a line with the line above it."
+            (interactive)
+            (save-excursion
+                (join-line)
+                )
+            )
+
             ;; Evil-mode keybindings
             ;; Define evil keys for normal state:
             (progn
@@ -59,6 +67,7 @@
               (define-key evil-normal-state-map (kbd "<right>") 'switch-to-next-buffer)
               (define-key evil-normal-state-map "L" 'evil-end-of-line)
               (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
+              (define-key evil-normal-state-map "K" 'my-evil-join-above)
               (define-key evil-normal-state-map "Y" 'evil-yank-to-eol)
               (define-key evil-normal-state-map "zg" 'my-save-word)
               (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error))

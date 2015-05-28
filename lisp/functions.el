@@ -232,3 +232,4 @@ From Nathan Typanski's blogpost 'Towards a vim-like emacs config'."
     (dired-up-directory)
     (kill-buffer old)
     ))
+
