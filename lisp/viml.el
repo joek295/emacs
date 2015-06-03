@@ -2,12 +2,14 @@
 
 ;; A mode for VimScript. Because there doesn't appear to be one, and I
 ;; want syntax highlighting when I look at my .vimrc file in Emacs.
-(require generic-x)
+(require 'generic-x)
 
 (define-generic-mode
     'viml-mode
   '("\"")
-  '("set" "map" "noremap" "vmap" "imap" "nmap" "inoremap" "nnoremap" "vnoremap" "let" "colorscheme" "filetype" "autocmd" "syntax" "au")
+  '("set" "let" "colorscheme" "filetype" "autocmd" "syntax" "au"
+    "map" "cmap" "imap" "nmap" "vmap"
+    "noremap" "cnoremap" "inoremap" "nnoremap" "vnoremap")
   '(
     ("formatoptions" . 'font-lock-preprocessor-face)
     ("incsearch" . 'font-lock-preprocessor-face)
@@ -22,7 +24,7 @@
     ("spell[a-z]*" . 'font-lock-preprocessor-face)
     ("statusline" . 'font-lock-preprocessor-face)
 
-    ("[a-z ]:[A-Za-z_]*" . 'font-lock-function-name-face)
+    ("[a-z ]:[A-Za-z_]+" . 'font-lock-function-name-face)
 
     ("enable" . 'font-lock-constant-face)
     ("Buf[A-Z][A-Za-z]*" . 'font-lock-constant-face)
@@ -32,12 +34,17 @@
     ("\\boff\\b" . 'font-lock-constant-face)
 
     ("\\(end\\)?if" . 'font-lock-builtin-face)
-    ("\\(end\\)?function" . 'font-lock-builtin-face)
+    ("\\(end\\)?func\\(tion\\)?" . 'font-lock-builtin-face)
 
     ("<.*?>" . 'font-lock-string-face)
+    ("'.*?'" . 'font-lock-string-face)
 
     ("getline" . 'font-lock-type-face)
     ("substitute" . 'font-lock-type-face)
+
+    ("=" . 'font-lock-negation-char-face)
+    ("+" . 'font-lock-negation-char-face)
+    ("-" . 'font-lock-negation-char-face)
     )
   '("\\.vimrc$")
   nil
