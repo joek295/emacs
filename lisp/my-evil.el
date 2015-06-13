@@ -81,11 +81,17 @@
 
             ;; Define evil keys in insert state:
             (progn
-              (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state))
+              (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+              (define-key evil-insert-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
+              (define-key evil-insert-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp)
+              )
+            
 
             ;; Define evil keys in visual state:
             (progn
-              (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state))
+              (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state)
+              (define-key evil-visual-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
+              (define-key evil-visual-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp))
 
             ;; Define evil keys in replace state:
             (progn
@@ -131,12 +137,12 @@
               )
 
             ;; Define evil keys in emacs state when ibuffer-mode is active
-            (evil-define-key 'emacs ibuffer-mode-map
-              "j" 'ibuffer-forward-line
-              "k" 'ibuffer-backward-line
-              "l" 'ibuffer-visit-buffer
-              "U" 'ibuffer-unmark-backward
-              "/" 'ibuffer-jump-to-buffer
-              )
-            )
-  )
+  (evil-define-key 'emacs ibuffer-mode-map
+    "j" 'ibuffer-forward-line
+    "k" 'ibuffer-backward-line
+    "l" 'ibuffer-visit-buffer
+    "U" 'ibuffer-unmark-backward
+    "/" 'ibuffer-jump-to-buffer
+    )
+  
+  ))
