@@ -2,12 +2,8 @@
 
 ;; Package management
 (require 'package) 
-;(add-to-list 'package-archives
-;             '("elpa" . "http://tromey.com/elpa/")) 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/")) 
-;(add-to-list 'package-archives
-;             '("marmalade" . "http://marmalade-repo.org/packages/")) 
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -22,6 +18,8 @@
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
+(autoload 'xbindkeys-mode "xbindkeys")
+(autoload 'nethackrc-mode "nh-config")
 (load "my-evil.el")
 (load "my-magit.el")
 (load "my-ido.el")
