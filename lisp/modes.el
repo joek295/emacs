@@ -72,6 +72,7 @@
 (defun my-prog-mode-hook ()
   "Run when entering any mode inheriting from prog-mode"
   (flyspell-prog-mode)
+  (paredit-mode)
   )
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
@@ -83,11 +84,19 @@
 (add-hook 'org-mode-hook 'my-org-mode-hook)
 
 ; text mode
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'text-mode-hook 'visual-line-mode)
+(defun my-text-mode-hook ()
+  "Run when entering text mode"
+  (flyspell-mode)
+  (visual-line-mode)
+  )
+(add-hook 'text-mode-hook 'my-text-mode-hook)
 
 ; tex mode
-(add-hook 'tex-mode-hook (lambda () (set-input-method "british")))
+(defun my-tex-mode-hook ()
+  "TeX mode hook"
+  (set-input-method "british")
+  )
+(add-hook 'tex-mode-hook 'my-tex-mode-hook)
 
 ; lisp modes
 (defun my-lisp-mode-hook ()
@@ -102,6 +111,12 @@
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
 ; misc modes
-(add-hook 'calendar-mode-hook (lambda () (evil-local-mode -1)))
-(add-hook 'eww-mode-hook (lambda () (linum-mode -1)))
-(add-hook 'elfeed-mode-hook 'my-elfeed-search-keys)
+(defun my-calendar-mode-hook ()
+  (evil-local-mode -1)
+  )
+(defun my-eww-mode-hook ()
+  (linum-mode -1)
+  )
+
+(add-hook 'calendar-mode-hook 'my-calendar-mode-hook)
+(add-hook 'eww-mode-hook 'my-eww-mode-hook)
