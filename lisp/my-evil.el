@@ -6,6 +6,7 @@
              :config (progn
                        (evil-leader/set-leader "<SPC>")
                        (evil-leader/set-key
+                         "c" 'compile
                          "f" 'fill-paragraph
                          "n" 'forward-paragraph
                          "p" 'backward-paragraph
@@ -37,11 +38,11 @@
               (evil-scroll-line-to-center (line-number-at-pos)))
             (defadvice switch-to-buffer (before return-to-normal-now activate)
               "In evil mode, return to normal state before switching buffer"
-              (when evil-mode
+              (when evil-mode-insert-state
                 (evil-normal-state)))
             (defadvice other-window (before other-window-normal-now activate)
               "In evil mode, return to normal state before switching window"
-              (when evil-mode
+              (when evil-mode-insert-state
                 (evil-normal-state)))
 
             ;; Evil-mode functions
@@ -74,6 +75,8 @@
               (define-key evil-normal-state-map "`" 'evil-goto-mark-char)
               (define-key evil-normal-state-map "zg" 'my-save-word)
               (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
+              (define-key evil-normal-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
+              (define-key evil-normal-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp)
               )
 
             ;; Define evil keys in insert state:
@@ -135,4 +138,5 @@
               "U" 'ibuffer-unmark-backward
               "/" 'ibuffer-jump-to-buffer
               )
-            ))
+            )
+  )
