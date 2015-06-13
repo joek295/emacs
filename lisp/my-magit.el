@@ -1,4 +1,5 @@
 ;; Magit configuration
+(setq magit-last-seen-setup-instructions "1.4.0")
 (use-package magit
   :ensure magit
   :config

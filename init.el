@@ -37,3 +37,4 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 ;;; end
+(put 'narrow-to-region 'disabled nil)

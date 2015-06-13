@@ -15,7 +15,7 @@
 ;(set-face-italic-p 'italic nil) 
 
 ; tabs
-(setq-default tab-width 2
+(setq-default tab-width 4
               indent-tabs-mode nil) 
 
 ; smoother scrolling

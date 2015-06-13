@@ -11,8 +11,7 @@
 (set-face-background hl-line-face "#073642")
 
 ;; customisation for graphical systems
-(when (display-graphic-p)
-  (progn
+(progn
     (set-face-attribute 'default nil :height 100)
     (set-face-attribute 'mode-line-standard-face nil
                         :foreground "base03" :background "#e4e4e4")
@@ -32,8 +31,7 @@
                         :foreground "#d33682" :background "#073642")
     (set-face-attribute 'mode-line-readonly-face nil
                         :foreground "#6c71c4" :background "#073642")
-    )
-  )
+)
 
 (progn
   (set-face-attribute 'mode-line-inactive nil :foreground "base03")
