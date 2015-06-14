@@ -1,25 +1,25 @@
 (use-package evil-leader
-             :ensure evil-leader
-             :demand evil-leader
-             :init
-             (global-evil-leader-mode t)
-             :config (progn
-                       (evil-leader/set-leader "<SPC>")
-                       (evil-leader/set-key
-                         "c" 'compile
-                         "f" 'fill-paragraph
-                         "n" 'forward-paragraph
-                         "p" 'backward-paragraph
-                         "j" 'open-line
-                         "o" 'newline-below
-                         "O" 'newline-above
-                         ;; Modes:
-                         "d" 'dired
-                         "b" 'ibuffer
-                         "g" 'magit-status
-                         "#" 'comment-or-uncomment-region)
-                       )
-             )
+  :ensure evil-leader
+  :demand evil-leader
+  :init
+  (global-evil-leader-mode t)
+  :config (progn
+            (evil-leader/set-leader "<SPC>")
+            (evil-leader/set-key
+              "c" 'compile
+              "f" 'fill-paragraph
+              "n" 'forward-paragraph
+              "p" 'backward-paragraph
+              "j" 'open-line
+              "o" 'newline-below
+              "O" 'newline-above
+              ;; Modes:
+              "d" 'dired
+              "b" 'ibuffer
+              "g" 'magit-status
+              "#" 'comment-or-uncomment-region)
+            )
+  )
 
 (use-package evil
   :ensure evil
@@ -38,11 +38,11 @@
               (evil-scroll-line-to-center (line-number-at-pos)))
             (defadvice switch-to-buffer (before return-to-normal-now activate)
               "In evil mode, return to normal state before switching buffer"
-              (when evil-mode-insert-state
+              (when evil-mode
                 (evil-normal-state)))
             (defadvice other-window (before other-window-normal-now activate)
               "In evil mode, return to normal state before switching window"
-              (when evil-mode-insert-state
+              (when evil-mode
                 (evil-normal-state)))
 
             ;; Evil-mode functions
@@ -54,12 +54,12 @@
               (evil-yank (point) (point-at-eol)))
 
             (defun my-evil-join-above ()
-            "Join a line with the line above it."
-            (interactive)
-            (save-excursion
+              "Join a line with the line above it."
+              (interactive)
+              (save-excursion
                 (join-line)
                 )
-            )
+              )
 
             ;; Evil-mode keybindings
             ;; Define evil keys for normal state:
@@ -85,7 +85,7 @@
               (define-key evil-insert-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
               (define-key evil-insert-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp)
               )
-            
+
 
             ;; Define evil keys in visual state:
             (progn
@@ -137,12 +137,12 @@
               )
 
             ;; Define evil keys in emacs state when ibuffer-mode is active
-  (evil-define-key 'emacs ibuffer-mode-map
-    "j" 'ibuffer-forward-line
-    "k" 'ibuffer-backward-line
-    "l" 'ibuffer-visit-buffer
-    "U" 'ibuffer-unmark-backward
-    "/" 'ibuffer-jump-to-buffer
-    )
-  
-  ))
+            (evil-define-key 'emacs ibuffer-mode-map
+              "j" 'ibuffer-forward-line
+              "k" 'ibuffer-backward-line
+              "l" 'ibuffer-visit-buffer
+              "U" 'ibuffer-unmark-backward
+              "/" 'ibuffer-jump-to-buffer
+              )
+            )
+  )
