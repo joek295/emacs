@@ -1,19 +1,18 @@
 ;; load solarized
 (set-frame-parameter nil 'background-mode 'dark)
-(setq visible-bell nil)
-
 (load-theme 'solarized t)
 
-;; customize fancy-modeline for solarized
+(setq visible-bell nil)
+
+;; Use fancy-modeline for my modeline
 (require 'fancy-modeline)
 
 (global-hl-line-mode 1)
 
 ;; customisation for graphical systems
-(if (display-graphic-p)
-    (progn
-      (set-face-attribute 'default nil :height 100)
-      ))
+(progn
+  (set-face-attribute 'default nil :height 100)
+  )
 
 (progn
   (set-face-attribute 'linum nil :foreground "white" :background "base03")
@@ -105,8 +104,8 @@ that hl-line-mode's line highlighting looks correct."
         )
     (progn
       (set-face-background 'hl-line "#000000"))
-        (set-face-attribute 'mode-line-inactive nil :foreground "#4d4d4d")
-        (set-face-attribute 'mode-line nil :foreground "#e4e4e4")
+    (set-face-attribute 'mode-line-inactive nil :foreground "#4d4d4d")
+    (set-face-attribute 'mode-line nil :foreground "#e4e4e4")
     )
   )
 
