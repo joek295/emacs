@@ -4,10 +4,12 @@
 ; the keys <C-c ?>, where ? is a single letter or number are free, as
 ; are all Fn where n > 4
 
-; evil mode and evil leader mode keys should only load if the
-; necessary mode has initialised
+; Keybindings for specific modes are to be found in the configuration
+; file for that mode, or in the modes.el configuration file if there
+; is no specific file for that mode.
 
-;; Universal keys:
+; The keybindings in this file are all global, and try to avoid
+; clobbering anything too important...
 
 ; Overriding built-in functionality:
 (global-set-key (kbd "C-x C-e") 'eval-defun)
@@ -22,10 +24,7 @@
 (global-set-key (kbd "C-c v") 'split-window-right-and-switch)
 (global-set-key (kbd "C-c f") 'elfeed)
 
-                                        ; F<n>
+; F<n>
 (global-set-key (kbd "<f1>") 'quickswitch)
 (global-set-key (kbd "<f2>") (lambda () (interactive) (setq quickbuffer (buffer-name))))
 (global-set-key (kbd "<f12>") 'my-toggle-input-method)
-
-;; Mode specific keys:
-
