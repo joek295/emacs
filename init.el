@@ -33,6 +33,4 @@
 (setq custom-file "~/.emacs.d/lisp/my-custom.el")
 (load custom-file)
 
-(put 'dired-find-alternate-file 'disabled nil)
 ;;; end
-(put 'narrow-to-region 'disabled nil)

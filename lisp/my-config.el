@@ -40,3 +40,6 @@
 ; navigate windows using Shift-arrow
 (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
+
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
