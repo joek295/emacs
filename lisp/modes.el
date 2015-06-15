@@ -54,12 +54,9 @@
         "http://sexgeek.wordpress.com/feed"
         "http://feeds.feedburner.com/PagingDrNerdlove"))
 
-;; (add-hook 'elfeed-new-entry-hook
-;;           (elfeed-make-tagger :entry-title '("Open Thread")
-;;                               :remove 'unread)
-;;           (elfeed-make-tagger :entry-title '("Meetup")
-;;                               :remove 'unread)
-;;           )
+(defun my-elfeed-search-keys ()
+  "Modify the default elfeed keymap"
+  (local-set-key "RET" 'elfeed-browse-url))
 
 ;; mode hooks
 ; after-init-hook
@@ -118,5 +115,10 @@
   (linum-mode -1)
   )
 
+(defun my-elfeed-mode-hook ()
+  (my-elfeed-search-keys)
+  )
+
 (add-hook 'calendar-mode-hook 'my-calendar-mode-hook)
 (add-hook 'eww-mode-hook 'my-eww-mode-hook)
+(add-hook 'elfeed-mode-hook 'my-elfeed-mode-hook)

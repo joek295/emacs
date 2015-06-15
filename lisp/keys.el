@@ -29,9 +29,3 @@
 
 ;; Mode specific keys:
 
-; Evil leader keys
-
-; Elfeed
-(defun my-elfeed-search-keys ()
-  "Modify the default elfeed keymap"
-  (local-set-key "RET" 'elfeed-browse-url))
