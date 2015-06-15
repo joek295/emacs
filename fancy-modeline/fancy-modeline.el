@@ -82,12 +82,13 @@ http://reddit.com/r/emacs/2hhhvg"
       '(:eval (propertize " %b " 'face 'mode-line-bold-face)))
 
 (setq my-mode-line-evilstate
-      '(:eval (cond ((evil-insert-state-p)  (propertize " I " 'face 'mode-line-insert-face))
-                    ((evil-normal-state-p)  (propertize " N " 'face 'mode-line-normal-face))
-                    ((evil-motion-state-p)  (propertize " M " 'face 'mode-line-normal-face))
-                    ((evil-emacs-state-p)   (propertize " E " 'face 'mode-line-emacs-face))
-                    ((evil-replace-state-p) (propertize " R " 'face 'mode-line-insert-face))
-                    ((evil-visual-state-p)  (propertize " V " 'face 'mode-line-visual-face))
+      '(:eval (cond ((evil-insert-state-p)    (propertize " I " 'face 'mode-line-insert-face))
+                    ((evil-normal-state-p)    (propertize " N " 'face 'mode-line-normal-face))
+                    ((evil-motion-state-p)    (propertize " M " 'face 'mode-line-normal-face))
+                    ((evil-operator-state-p)  (propertize " O " 'face 'mode-line-normal-face))
+                    ((evil-emacs-state-p)     (propertize " E " 'face 'mode-line-emacs-face))
+                    ((evil-replace-state-p)   (propertize " R " 'face 'mode-line-insert-face))
+                    ((evil-visual-state-p)    (propertize " V " 'face 'mode-line-visual-face))
                     )))
 
 (setq my-mode-line-overwrite
