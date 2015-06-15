@@ -19,13 +19,7 @@
             "http://sexgeek.wordpress.com/feed"
             "http://feeds.feedburner.com/PagingDrNerdlove"))
 
-    (defun my-elfeed-search-keys ()
-      "Modify the default elfeed keymap"
-      (local-set-key "RET" 'elfeed-browse-url))
-
-    (defun my-elfeed-mode-hook ()
-      (my-elfeed-search-keys)
-      )
-    (add-hook 'elfeed-mode-hook 'my-elfeed-mode-hook)
+    (evil-define-key 'normal elfeed-search-mode-map
+      (kbd "RET") 'elfeed-search-browse-url)
     )
   )
