@@ -19,7 +19,7 @@
     (evil-define-key 'normal magit-mode-map
       "j" 'magit-goto-next-section
       "k" 'magit-goto-previous-section
-      "TAB" 'magit-toggle-section
+      (kbd "TAB") 'magit-toggle-section
       "g" 'magit-refresh
       "G" 'magit-refresh-all
       "s" 'magit-stage-item
@@ -29,7 +29,7 @@
       "q" 'magit-mode-quit-window
       "?" 'magit-describe-item
       ":" 'magit-git-command
-      "RET" 'magit-visit-item
+      (kbd "RET") 'magit-visit-item
       "t" 'magit-key-mode-popup-tagging
       "r" 'magit-key-mode-popup-rewriting
       "P" 'magit-key-mode-popup-pushing
