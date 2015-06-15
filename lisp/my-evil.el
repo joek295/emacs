@@ -110,6 +110,10 @@
             ;; Define evil keys in normal state when org-mode is active
             (evil-define-key 'normal org-mode-map
               (kbd "TAB") 'org-cycle
+              (kbd "M-j") 'org-metaup
+              (kbd "M-k") 'org-metadown
+              (kbd "M-h") 'org-metaleft
+              (kbd "M-l") 'org-metaright
               )
 
             ;; Define evil keys in normal state when eww-mode is active
