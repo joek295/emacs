@@ -22,6 +22,7 @@
 (autoload 'nethackrc-mode "nh-config")
 (load "my-evil.el")
 (load "my-magit.el")
+(load "my-elfeed.el")
 (load "my-ido.el")
 (load "modes.el")
 (load "functions.el")
