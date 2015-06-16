@@ -65,14 +65,12 @@
             ;; Define evil keys for normal state:
             (progn
               (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
-              (define-key evil-normal-state-map (kbd "<left>") 'switch-to-prev-buffer)
-              (define-key evil-normal-state-map (kbd "<right>") 'switch-to-next-buffer)
               (define-key evil-normal-state-map "L" 'evil-end-of-line)
               (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
               (define-key evil-normal-state-map "K" 'my-evil-join-above)
               (define-key evil-normal-state-map "Y" 'evil-yank-to-eol)
               (define-key evil-normal-state-map "'" 'evil-goto-mark)
-              (define-key evil-normal-state-map "`" 'evil-goto-mark-char)
+              (define-key evil-normal-state-map "`" 'evil-goto-mark-line)
               (define-key evil-normal-state-map "zg" 'my-save-word)
               (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
               (define-key evil-normal-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
