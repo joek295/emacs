@@ -220,10 +220,6 @@ run toggle-input-method (C-\)."
     (beginning-of-line)
     (newline)))
 
-;(defun latex-emphasise-word ()
-;  "surround the word under the point with \emph{}."
-;  )
-
 (defun my-dired-up-directory ()
   "Dired up directory and kill old dired buffer.
 From Nathan Typanski's blogpost 'Towards a vim-like emacs config'."
@@ -232,4 +228,3 @@ From Nathan Typanski's blogpost 'Towards a vim-like emacs config'."
     (dired-up-directory)
     (kill-buffer old)
     ))
-
