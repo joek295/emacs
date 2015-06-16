@@ -75,28 +75,32 @@
               (define-key evil-normal-state-map "`" 'evil-goto-mark-char)
               (define-key evil-normal-state-map "zg" 'my-save-word)
               (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
-              (define-key evil-normal-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
-              (define-key evil-normal-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp)
+              (define-key evil-normal-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
+              (define-key evil-normal-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp)
               )
 
             ;; Define evil keys in insert state:
             (progn
               (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-              (define-key evil-insert-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
-              (define-key evil-insert-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp)
+              (define-key evil-insert-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
+              (define-key evil-insert-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp)
               )
 
 
             ;; Define evil keys in visual state:
             (progn
               (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state)
-              (define-key evil-visual-state-map (kbd "C-<left>") 'paredit-forward-slurp-sexp)
-              (define-key evil-visual-state-map (kbd "C-<right>") 'paredit-forward-barf-sexp))
+              (define-key evil-visual-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
+              (define-key evil-visual-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp))
 
             ;; Define evil keys in replace state:
             (progn
               (define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state))
 
+            (progn
+              (define-key evil-operator-state-map "L" 'evil-end-of-line)
+              (define-key evil-operator-state-map "H" 'smart-move-to-beginning-of-line)
+              )
             ;; Define evil keys in normal state when prog-mode is active
             (evil-define-key 'normal prog-mode-map
               (kbd "C-c i") 'indent-buffer
