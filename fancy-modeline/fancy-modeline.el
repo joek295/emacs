@@ -9,11 +9,11 @@
 
 ;;; Features:
 
-;; fancy-modeline is a modeline designed for use with evil mode.  it
+;; fancy-modeline is a modeline designed for use with evil mode.  It
 ;; shows the current evil mode state, the active window, the buffer
 ;; name, the current major mode, the cursor position, and whether a
-;; file is modified or read only.  it is designed to be flexible and
-;; simple to reconfigure to the user's liking.  the code should be
+;; file is modified or read only.  It is designed to be flexible and
+;; simple to reconfigure to the user's liking.  The code should be
 ;; well laid out, and easy to read, understand, and modify.
 
 ;;; Code:
@@ -28,22 +28,22 @@
   `((t (:foreground "#002b36" :weight bold :background "#eee8d5")))
   "font for cursor position information")
 (defface mode-line-insert-face
-  `((t (:foreground "#002b36" :background "#dc322f")))
+  `((t (:foreground "#002b36" :background "red")))
   "font for mode-line insert flag")
 (defface mode-line-normal-face
-  `((t (:foreground "#002b36" :background "#268bd2")))
+  `((t (:foreground "#002b36" :background "blue")))
   "font for normal-state-flag")
 (defface mode-line-visual-face
-  `((t (:foreground "#002b36" :background "#859900")))
+  `((t (:foreground "#002b36" :background "green")))
   "font for visual-state-flag")
 (defface mode-line-emacs-face
-  `((t (:foreground "#002b36" :background "#cb4b16")))
+  `((t (:foreground "#002b36" :background "orange")))
   "font for visual-state flag")
 (defface mode-line-active-face
-  `((t (:foreground "#002b36" :background "#2aa198")))
+  `((t (:foreground "#002b36" :background "cyan")))
   "font for active-state-flag")
 (defface mode-line-modified-face
-  `((t (:foreground "#002b36" :weight bold :background "#d33682")))
+  `((t (:foreground "#002b36" :weight bold :background "magenta")))
   "font for modified flag")
 (defface mode-line-readonly-face
   `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
@@ -51,17 +51,6 @@
 
 (set-face-background 'mode-line "#eee8d5")
 (set-face-background 'mode-line-inactive "#002b36")
-
-(defun window-active-p ()
-  "Return true if window is active.
-
-Code taken from /u/ijustwantanfingname on /r/emacs.
-
-http://reddit.com/r/emacs/2hhhvg"
-  (interactive)
-  (eq
-   (selected-window)
-   (get-buffer-window)))
 
 (setq my-mode-line-position
       '(:eval (propertize "[%p: L%02l C%02c]" 'face 'mode-line-position-face)))
@@ -97,15 +86,6 @@ http://reddit.com/r/emacs/2hhhvg"
                 (propertize "INS" 'face 'mode-line-standard-face))))
 
 
-(setq my-mode-line-active
-; this is extremely buggy and doesn't work at all consistently
-      '(:eval (when (window-active-p)
-                (propertize " A " 'face 'mode-line-active-face))))
-
-(setq my-mode-line-input
-; this is extremely buggy and doesn't work at all consistently
-     '(:eval (propertize (message current-input-method) 'face 'mode-line-standard-face)))
-
 (setq-default mode-line-format
               (list
                my-mode-line-evilstate
@@ -115,8 +95,6 @@ http://reddit.com/r/emacs/2hhhvg"
                my-mode-line-modified
                my-mode-line-readonly
                my-mode-line-overwrite
-;               my-mode-line-active
-;               my-mode-line-input
                ))
 
 (provide 'fancy-modeline)
