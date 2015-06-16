@@ -29,9 +29,9 @@
       "q" 'magit-mode-quit-window
       "?" 'magit-describe-item
       ":" 'magit-git-command
+      "r" 'magit-revert-item
       (kbd "RET") 'magit-visit-item
       "t" 'magit-key-mode-popup-tagging
-      "r" 'magit-key-mode-popup-rewriting
       "P" 'magit-key-mode-popup-pushing
       "f" 'magit-key-mode-popup-fetching
       "b" 'magit-key-mode-popup-branching
