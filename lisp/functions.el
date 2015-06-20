@@ -1,9 +1,9 @@
 ;;; Functions
 
-; Miscellaneous functions written in elisp.  Too short and simple to
-; require a separate file, but often very useful.  Mostly written by
-; myself, but some taken from various places on the web.  This file
-; also contains advice for existing Emacs functions.
+;; Miscellaneous functions written in elisp.  Too short and simple to
+;; require a separate file, but often very useful.  Mostly written by
+;; myself, but some taken from various places on the web.  This file
+;; also contains advice for existing Emacs functions.
 
 ;; Buffer manipulation
 (defun switch-to-previous-buffer ()

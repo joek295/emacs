@@ -24,6 +24,7 @@
 (load "my-magit.el")
 (load "my-elfeed.el")
 (load "my-ido.el")
+(load "my-helm.el")
 (load "modes.el")
 (load "functions.el")
 (load "keys.el")
