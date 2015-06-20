@@ -17,13 +17,12 @@
 ; viml-mode; all .tex files should open in latex-mode; all files
 ; ending in "fortunes" should open in fortunate-mode
 (setq default-major-mode 'text-mode)
-(setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\NEWS$" . shortlines-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\README" . shortlines-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\Readme" . shortlines-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\readme" . shortlines-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.vimrc$" . viml-mode) auto-mode-alist))
+(progn
+  (setq auto-mode-alist (cons '("\\fortunes$" . fortunate-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.vimrc$" . viml-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.nethackrc$" . nethackrc-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.xbindkeysrc$" . xbindkeys-mode) auto-mode-alist)))
 
 ;; flyspell mode
 (defun my-save-word ()

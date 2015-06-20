@@ -1,3 +1,13 @@
+(defun my-intelligent-compile ()
+  "Intelligently compile things.  Use M-x compile for .c files,
+  compile .tex files, and export .org files to HTML."
+  (interactive)
+  (if (derived-mode-p 'org-mode)
+      (org-html-export-to-html)
+    (compile)
+    )
+  )
+
 (use-package evil-leader
   :ensure evil-leader
   :demand evil-leader
@@ -6,7 +16,7 @@
   :config (progn
             (evil-leader/set-leader "<SPC>")
             (evil-leader/set-key
-              "c" 'compile
+              "c" 'my-intelligent-compile
               "f" 'fill-paragraph
               "n" 'forward-paragraph
               "p" 'backward-paragraph
@@ -75,6 +85,7 @@
               (define-key evil-normal-state-map "]s" 'flyspell-goto-next-error)
               (define-key evil-normal-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
               (define-key evil-normal-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp)
+              (define-key evil-normal-state-map (kbd "C-a") 'my-increment-integer-at-point)
               )
 
             ;; Define evil keys in insert state:

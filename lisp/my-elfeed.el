@@ -19,6 +19,12 @@
             "http://sexgeek.wordpress.com/feed"
             "http://feeds.feedburner.com/PagingDrNerdlove"))
 
+    (defun my-elfeed-mode-hook ()
+      (linum-mode -1)
+      )
+
+    (add-hook 'elfeed-search-mode-hook 'my-elfeed-mode-hook)
+
     (evil-define-key 'normal elfeed-search-mode-map
       (kbd "RET") 'elfeed-search-browse-url)
     )
