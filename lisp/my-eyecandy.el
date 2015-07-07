@@ -99,8 +99,8 @@ that hl-line-mode's line highlighting looks correct."
   (if (display-graphic-p)
       (progn
         (set-face-background 'hl-line "#073642")
-        (set-face-attribute 'mode-line-inactive nil :foreground "#073642")
-        (set-face-attribute 'mode-line nil :foreground "#a9a9a9")
+        (set-face-attribute 'mode-line-inactive nil :foreground "#073642" :background "#eee8d5")
+        (set-face-attribute 'mode-line nil :foreground "#a9a9a9" :background "#002b36")
         )
     (progn
       (set-face-background 'hl-line "#000000"))
