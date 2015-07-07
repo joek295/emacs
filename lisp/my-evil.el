@@ -160,5 +160,10 @@
               "U" 'ibuffer-unmark-backward
               "/" 'ibuffer-jump-to-buffer
               )
+
+            (evil-define-key 'normal calendar-mode-map
+              "h" 'calendar-backward-day
+              "k" 'calendar-backward-week
+              )
             )
   )
