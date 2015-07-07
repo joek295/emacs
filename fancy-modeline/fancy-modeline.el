@@ -85,8 +85,10 @@
                   (propertize "OVR" 'face 'mode-line-emacs-face)
                 (propertize "INS" 'face 'mode-line-standard-face))))
 
+(setq my-mode-line-git
+      '(vc-mode vc-mode))
 
-(setq-default mode-line-format
+(setq mode-line-format
               (list
                my-mode-line-evilstate
                my-mode-line-buffname
@@ -95,6 +97,7 @@
                my-mode-line-modified
                my-mode-line-readonly
                my-mode-line-overwrite
+               my-mode-line-git
                ))
 
 (provide 'fancy-modeline)
