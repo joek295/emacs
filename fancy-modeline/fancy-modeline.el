@@ -90,7 +90,7 @@
 (setq my-mode-line-git
       '(vc-mode vc-mode))
 
-(setq mode-line-format
+(setq my-mode-line-format
               (list
                my-mode-line-evilstate
                my-mode-line-buffname
@@ -101,6 +101,11 @@
                my-mode-line-overwrite
                my-mode-line-git
                ))
+
+(defun my-reset-modeline ()
+  "Load new modeline"
+  (interactive)
+  (setq mode-line-format my-mode-line-format))
 
 (provide 'fancy-modeline)
 
