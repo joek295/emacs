@@ -107,6 +107,8 @@
   (interactive)
   (setq mode-line-format my-mode-line-format))
 
+(setq-default mode-line-format my-mode-line-format)
+
 (provide 'fancy-modeline)
 
 ;;; END
