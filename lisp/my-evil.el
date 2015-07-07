@@ -74,7 +74,6 @@
             ;; Evil-mode keybindings
             ;; Define evil keys for normal state:
             (progn
-              (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
               (define-key evil-normal-state-map "L" 'evil-end-of-line)
               (define-key evil-normal-state-map "H" 'smart-move-to-beginning-of-line)
               (define-key evil-normal-state-map "K" 'my-evil-join-above)
