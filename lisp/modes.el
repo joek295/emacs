@@ -86,12 +86,8 @@
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
 ; misc modes
-(defun my-calendar-mode-hook ()
-  (evil-local-mode -1)
-  )
 (defun my-eww-mode-hook ()
   (linum-mode -1)
   )
 
-(add-hook 'calendar-mode-hook 'my-calendar-mode-hook)
 (add-hook 'eww-mode-hook 'my-eww-mode-hook)
