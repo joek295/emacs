@@ -6,7 +6,6 @@
 
 ;; Use fancy-modeline for my modeline
 (require 'fancy-modeline)
-(my-reset-modeline)
 
 (global-hl-line-mode 1)
 
