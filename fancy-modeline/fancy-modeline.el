@@ -49,8 +49,10 @@
   `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
   "font for read-only flag")
 
-(set-face-background 'mode-line "#eee8d5")
-(set-face-background 'mode-line-inactive "#002b36")
+(set-face-foreground 'mode-line "#a9a9a9")
+(set-face-foreground 'mode-line-inactive  "#073642")
+(set-face-background 'mode-line "#002b36")
+(set-face-background 'mode-line-inactive "#eee8d5")
 
 (setq my-mode-line-position
       '(:eval (propertize "[%p: L%02l C%02c]" 'face 'mode-line-position-face)))
