@@ -173,6 +173,7 @@
               "." 'calendar-goto-today
               "<" 'calendar-scroll-right-three-months
               ">" 'calendar-scroll-left-three-months
+              "q" 'calendar-exit
               )
             )
   )
