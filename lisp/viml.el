@@ -7,12 +7,14 @@
 (define-generic-mode
     'viml-mode
   '("\"")
-  '("set" "let" "colorscheme" "filetype" "autocmd" "syntax" "au"
+  '("set" "let" "colorscheme" "filetype" "autocmd" "syntax" "au" "source"
+    "iabbrev"
     "map" "cmap" "imap" "nmap" "vmap"
     "noremap" "cnoremap" "inoremap" "nnoremap" "vnoremap")
   '(
     ("formatoptions" . 'font-lock-preprocessor-face)
-    ("incsearch" . 'font-lock-preprocessor-face)
+    ("[a-z]*search" . 'font-lock-preprocessor-face)
+    ("[a-z]*case" . 'font-lock-preprocessor-face)
     ("laststatus" . 'font-lock-preprocessor-face)
     ("linebreak" . 'font-lock-preprocessor-face)
     ("no[a-z]*backup" . 'font-lock-preprocessor-face)
