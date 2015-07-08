@@ -148,6 +148,7 @@
             ;; Define evil keys in normal state when dired-mode is active
             (evil-define-key 'normal dired-mode-map
               "l" 'dired-find-alternate-file
+              (kbd "RET") 'dired-find-alternate-file
               "h" 'my-dired-up-directory
               "q" 'kill-this-buffer
               "n" 'evil-search-next
