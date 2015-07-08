@@ -17,6 +17,7 @@
     (add-hook 'magit-log-edit-mode-hook 'refill-mode)
     ;; Magit keybindings with evil mode
     (evil-define-key 'normal magit-mode-map
+      "m" 'magit-key-mode-popup-merging
       "j" 'magit-goto-next-section
       "k" 'magit-goto-previous-section
       (kbd "TAB") 'magit-toggle-section
