@@ -44,5 +44,5 @@
       "d" 'magit-diff-working-tree
       "D" 'magit-diff)
     (set-face-attribute 'magit-section-title nil
-                        :foreground "black")
+                        :foreground "black" :background "blue")
     ))
