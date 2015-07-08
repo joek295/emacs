@@ -14,6 +14,15 @@
   :init
   (global-evil-leader-mode t)
   :config (progn
+            (defun my-evil-upcase-WORD ()
+              "same as <esc>gUaW"
+              (interactive)
+              (save-excursion
+                (evil-backward-WORD-begin) 
+                (evil-upcase (point) (progn (evil-forward-WORD-end) (point)))
+                )
+              )
+
             (evil-leader/set-leader "<SPC>")
             (evil-leader/set-key
               "c" 'my-intelligent-compile
@@ -23,11 +32,13 @@
               "j" 'open-line
               "o" 'newline-below
               "O" 'newline-above
+              "u" 'my-evil-upcase-WORD
               ;; Modes:
               "d" 'dired
               "b" 'ibuffer
               "g" 'magit-status
-              "#" 'comment-or-uncomment-region)
+              "#" 'comment-or-uncomment-region
+              )
             )
   )
 
