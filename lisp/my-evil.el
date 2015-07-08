@@ -162,8 +162,17 @@
               )
 
             (evil-define-key 'normal calendar-mode-map
+              "l" 'calendar-forward-day
               "h" 'calendar-backward-day
+              "j" 'calendar-forward-week
               "k" 'calendar-backward-week
+              ")" 'calendar-forward-month
+              "(" 'calendar-backward-month
+              "}" 'calendar-forward-year
+              "{" 'calendar-backward-year
+              "." 'calendar-goto-today
+              "<" 'calendar-scroll-right-three-months
+              ">" 'calendar-scroll-left-three-months
               )
             )
   )
