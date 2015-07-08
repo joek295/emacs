@@ -17,7 +17,6 @@
     (add-hook 'magit-log-edit-mode-hook 'refill-mode)
     ;; Magit keybindings with evil mode
     (evil-define-key 'normal magit-mode-map
-      "m" 'magit-key-mode-popup-merging
       "j" 'magit-goto-next-section
       "k" 'magit-goto-previous-section
       (kbd "TAB") 'magit-toggle-section
@@ -26,16 +25,18 @@
       "s" 'magit-stage-item
       "S" 'magit-stage-all
       "i" 'magit-ignore-item
+      "r" 'magit-revert-item
       "c" 'magit-commit 
       "q" 'magit-mode-quit-window
+      (kbd "RET") 'magit-visit-item
+      "b" 'magit-key-mode-popup-branching
+      "m" 'magit-key-mode-popup-merging
+      "P" 'magit-key-mode-popup-pushing
+;; I have never used any of the below keybindings...
       "?" 'magit-describe-item
       ":" 'magit-git-command
-      "r" 'magit-revert-item
-      (kbd "RET") 'magit-visit-item
       "t" 'magit-key-mode-popup-tagging
-      "P" 'magit-key-mode-popup-pushing
       "f" 'magit-key-mode-popup-fetching
-      "b" 'magit-key-mode-popup-branching
       "M" 'magit-key-mode-popup-remoting
       "B" 'magit-key-mode-popup-bisecting
       "F" 'magit-key-mode-popup-pulling
