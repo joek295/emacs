@@ -43,3 +43,6 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+; default directory should be my $HOME directory
+(setq default-directory "~/")

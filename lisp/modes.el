@@ -24,6 +24,9 @@
   (setq auto-mode-alist (cons '("\\.nethackrc$" . nethackrc-mode) auto-mode-alist))
   (setq auto-mode-alist (cons '("\\.xbindkeysrc$" . xbindkeys-mode) auto-mode-alist)))
 
+;; dired mode
+(setq dired-listing-switches "--group-directories-first -alh")
+
 ;; flyspell mode
 (defun my-save-word ()
   "Tell Flyspell that it should remember a word as correct."
@@ -36,6 +39,14 @@
 ;; linum mode
 (setq linum-format 'dynamic)
 
+;; paredit mode
+(defun my-paredit-nonlisp ()
+  "Turn on paredit mode for non-lisps."
+  (interactive)
+  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+       '((lambda (endp delimiter) nil)))
+  (paredit-mode 1))
+
 ;; mode hooks
 ; after-init-hook
 (defun my-after-init-hook ()
@@ -47,9 +58,14 @@
 (defun my-prog-mode-hook ()
   "Run when entering any mode inheriting from prog-mode"
   (flyspell-prog-mode)
-  (paredit-mode)
   )
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
+
+(defun my-python-mode-hook ()
+  "Run when entering python-mode"
+  (my-paredit-nonlisp)
+  )
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ; org mode
 (defun my-org-mode-hook ()
@@ -77,6 +93,7 @@
 (defun my-lisp-mode-hook ()
   "Run when entering lisp-interaction-mode or emacs-lisp-mode"
   (eldoc-mode)
+  (paredit-mode)
   (push '(">=" . ?≥) prettify-symbols-alist)
   (push '("<=" . ?≤) prettify-symbols-alist)
   (push '("==" . ?≡) prettify-symbols-alist)
@@ -86,6 +103,11 @@
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
 ; misc modes
+(defun my-dired-mode-hook ()
+  (dired-omit-mode t)
+  )
+(add-hook 'dired-mode-hook 'my-dired-mode-hook)
+
 (defun my-eww-mode-hook ()
   (linum-mode -1)
   )
