@@ -17,14 +17,14 @@
     (add-hook 'magit-log-edit-mode-hook 'refill-mode)
     ;; Magit keybindings with evil mode
     (evil-define-key 'normal magit-mode-map
-      "j" 'magit-goto-next-section
-      "k" 'magit-goto-previous-section
-      (kbd "TAB") 'magit-toggle-section
+      "j" 'magit-section-forward
+      "k" 'magit-section-backward
+      (kbd "TAB") 'magit-section-toggle
       "g" 'magit-refresh
       "G" 'magit-refresh-all
       "s" 'magit-stage-item
       "S" 'magit-stage-all
-      "i" 'magit-ignore-item
+      "i" 'magit-gitignore
       "r" 'magit-revert-item
       "c" 'magit-commit 
       "q" 'magit-mode-quit-window
@@ -43,6 +43,4 @@
       "l" 'magit-key-mode-popup-logging
       "d" 'magit-diff-working-tree
       "D" 'magit-diff)
-    (set-face-attribute 'magit-section-title nil
-                        :foreground "black" :background "blue")
     ))
