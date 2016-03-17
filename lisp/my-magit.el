@@ -27,7 +27,7 @@
       "i" 'magit-gitignore
       "r" 'magit-revert-item
       "c" 'magit-commit 
-      "q" 'magit-mode-quit-window
+      "q" 'kill-active-buffer
       (kbd "RET") 'magit-visit-item
       "b" 'magit-key-mode-popup-branching
       "m" 'magit-key-mode-popup-merging

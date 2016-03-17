@@ -47,6 +47,7 @@
   :demand evil
   :config (progn
             (evil-mode 1)
+            (setq evil-move-cursor-back nil)
             ;; Evil-mode advice
             ;; Both advice for evil functions, and advice which only
             ;; needs to take effect when evil mode is active goes in
@@ -194,5 +195,11 @@
               ">" 'calendar-scroll-left-three-months
               "q" 'calendar-exit
               )
+
+            (evil-define-key 'normal info-mode-map
+              "gg" 'evil-goto-first-line
+              "n" 'evil-search-next
+              )
+
             )
   )

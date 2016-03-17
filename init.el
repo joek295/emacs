@@ -31,6 +31,8 @@
 (load "my-config.el")
 (load "my-eyecandy.el")
 
+(setq Info-directory-list '("~/info" "/usr/share/info"))
+
 ; M-x customize saves its configurations in the file 'custom-file'
 (setq custom-file "~/.emacs.d/lisp/my-custom.el")
 (load custom-file)
