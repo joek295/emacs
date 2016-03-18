@@ -31,6 +31,7 @@ Special commands:
   (defalias 'forward-fortune 'forward-page)
   (defalias 'narrow-to-fortune 'narrow-to-page)
   (defalias 'what-fortune 'what-page) 
+  (defalias 'evil-save 'fortunate-save)
   )
 
 (defun fortunate-save ()
