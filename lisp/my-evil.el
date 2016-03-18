@@ -218,5 +218,8 @@
               "n" 'evil-search-next
               )
 
+            (evil-define-key 'normal package-menu-mode-map
+              "q" 'window-quit
+              )
             )
   )

@@ -5,6 +5,7 @@
   :config
   (progn
     (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-h a") 'helm-apropos)
     (global-set-key (kbd "C-x C-f") 'helm-find-files)
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (define-key helm-map (kbd "C-h") 'helm-find-files-up-one-level)
