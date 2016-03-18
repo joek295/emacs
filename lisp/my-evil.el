@@ -48,6 +48,10 @@
   :config (progn
             (evil-mode 1)
             (setq evil-move-cursor-back nil)
+            (setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
+            (setq evil-motion-state-modes nil)
+            (setq evil-normal-state-modes (append evil-emacs-state-modes evil-normal-state-modes))
+            (setq evil-emacs-state-modes nil)
             ;; Evil-mode advice
             ;; Both advice for evil functions, and advice which only
             ;; needs to take effect when evil mode is active goes in
