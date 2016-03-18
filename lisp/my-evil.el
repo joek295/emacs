@@ -87,6 +87,17 @@
                 )
               )
 
+            ;; Evil-mode text objects
+            (evil-define-text-object evil-a-c-comment (count &optional beg end type)
+              "Text object for around C-style comments."
+              (list (search-backward "/*") (search-forward "*/"))
+              )
+
+            (evil-define-text-object evil-inner-c-comment (count &optional beg end type)
+              "Text object for inside C-style comments."
+              (list (+ (search-backward "/*") 2) (- (search-forward "*/") 2))
+              )
+
             ;; Evil-mode keybindings
             ;; Define evil keys for normal state:
             (progn
@@ -131,6 +142,8 @@
             (progn
               (define-key evil-operator-state-map "L" 'evil-end-of-line)
               (define-key evil-operator-state-map "H" 'smart-move-to-beginning-of-line)
+              (define-key evil-operator-state-map "ic" 'evil-inner-c-comment)
+              (define-key evil-operator-state-map "ac" 'evil-a-c-comment)
               )
             ;; Define evil keys in normal state when prog-mode is active
             (evil-define-key 'normal prog-mode-map
