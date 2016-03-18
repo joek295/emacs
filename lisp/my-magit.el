@@ -28,7 +28,7 @@
       "r" 'magit-revert-item
       "c" 'magit-commit 
       "q" 'kill-active-buffer
-      (kbd "RET") 'magit-visit-item
+      (kbd "RET") 'magit-diff-visit-file
       "b" 'magit-key-mode-popup-branching
       "m" 'magit-key-mode-popup-merging
       "P" 'magit-key-mode-popup-pushing
