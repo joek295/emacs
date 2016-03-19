@@ -27,11 +27,10 @@
             (evil-leader/set-key
               "c" 'my-intelligent-compile
               "f" 'fill-paragraph
-              "n" 'forward-paragraph
-              "p" 'backward-paragraph
               "j" 'open-line
               "o" 'newline-below
               "O" 'newline-above
+              "p" 'my-yank-x-primary-selection
               "u" 'my-evil-upcase-WORD
               ;; Modes:
               "d" 'dired

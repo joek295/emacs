@@ -5,6 +5,12 @@
 ;; myself, but some taken from various places on the web.  This file
 ;; also contains advice for existing Emacs functions.
 
+(defun my-yank-x-primary-selection ()
+    "Insert the X Primary Selection under the point."
+  (interactive)
+  (insert (x-get-selection-value))
+  )
+
 ;; Buffer manipulation
 (defun switch-to-previous-buffer ()
   "Switch the open buffer to the previous buffer."
