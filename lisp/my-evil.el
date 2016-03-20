@@ -207,27 +207,52 @@
               )
 
             (evil-define-key 'normal calendar-mode-map
+              ; jumping to dates
+              "." 'calendar-goto-today
+              "gw" 'calendar-iso-goto-week
+              "gd" 'calendar-iso-goto-date
+              ; move by day
               "l" 'calendar-forward-day
               "h" 'calendar-backward-day
+              ; move by week
               "j" 'calendar-forward-week
               "k" 'calendar-backward-week
+              "b" 'calendar-beginning-of-week
+              "e" 'calendar-end-of-week
+              ; move by month
               ")" 'calendar-forward-month
               "(" 'calendar-backward-month
+              "0" 'calendar-beginning-of-month
+              "$" 'calendar-end-of-month
+              ; move by year
               "}" 'calendar-forward-year
               "{" 'calendar-backward-year
-              "." 'calendar-goto-today
-              "<" 'calendar-scroll-right-three-months
-              ">" 'calendar-scroll-left-three-months
+              ; diary
+              "id" 'diary-insert-entry
+              "iw" 'diary-insert-weekly-entry
+              "im" 'diary-insert-monthly-entry
+              "iy" 'diary-insert-yearly-entry
+              ; other
+              ; other
+              "x" 'calendar-mark-holidays
+              "u" 'calendar-unmark
+              "m" 'calendar-set-mark
               "q" 'calendar-exit
               )
 
             (evil-define-key 'normal info-mode-map
               "gg" 'evil-goto-first-line
               "n" 'evil-search-next
+              "q" 'quit-window
               )
 
             (evil-define-key 'normal package-menu-mode-map
-              "q" 'window-quit
+              "q" 'quit-window
+              "x" 'package-menu-execute
+              "d" 'package-menu-mark-delete
+              "i" 'package-menu-mark-install
+              "g" 'package-menu-refresh
+              "u" ' package-menu-unmark
               )
             )
   )
