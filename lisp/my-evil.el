@@ -59,7 +59,16 @@
               "When using the goto line command ('G'), try to center the line"
               (evil-scroll-line-to-center (line-number-at-pos)))
             (defadvice evil-ex-search-next (after evil-find-key-and-center activate)
+              "When searching with evil's ex commands (':/'), center the line."
+              (evil-scroll-line-to-center (line-number-at-pos)))
+            (defadvice evil-ex-search-previous (after evil-find-key-and-center activate)
+              "When searching with evil's ex commands (':/'), center the line."
+              (evil-scroll-line-to-center (line-number-at-pos)))
+            (defadvice evil-search-next (after evil-find-key-and-center activate)
               "When using the search next command ('n'), try to center the line"
+              (evil-scroll-line-to-center (line-number-at-pos)))
+            (defadvice evil-search-previous (after evil-find-key-and-center activate)
+              "When using the search previous command ('N'), try to center the line"
               (evil-scroll-line-to-center (line-number-at-pos)))
             (defadvice switch-to-buffer (before return-to-normal-now activate)
               "In evil mode, return to normal state before switching buffer"
