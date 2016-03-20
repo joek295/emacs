@@ -28,10 +28,10 @@
       "r" 'magit-revert-item
       "c" 'magit-commit 
       "q" 'kill-active-buffer
+      "p" 'magit-push
       (kbd "RET") 'magit-diff-visit-file
       "b" 'magit-key-mode-popup-branching
       "m" 'magit-key-mode-popup-merging
-      "P" 'magit-key-mode-popup-pushing
 ;; I have never used any of the below keybindings...
       "?" 'magit-describe-item
       ":" 'magit-git-command
