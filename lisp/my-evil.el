@@ -14,15 +14,6 @@
   :init
   (global-evil-leader-mode t)
   :config (progn
-            (defun my-evil-upcase-WORD ()
-              "same as <esc>gUaW"
-              (interactive)
-              (save-excursion
-                (evil-backward-WORD-begin) 
-                (evil-upcase (point) (progn (evil-forward-WORD-end) (point)))
-                )
-              )
-
             (evil-leader/set-leader "<SPC>")
             (evil-leader/set-key
               "c" 'my-intelligent-compile
@@ -31,7 +22,6 @@
               "o" 'newline-below
               "O" 'newline-above
               "p" 'my-yank-x-primary-selection
-              "u" 'my-evil-upcase-WORD
               ;; Modes:
               "d" 'dired
               "b" 'ibuffer
