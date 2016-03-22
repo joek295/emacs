@@ -116,3 +116,10 @@
   )
 
 (add-hook 'eww-mode-hook 'my-eww-mode-hook)
+
+(defun my-fortunate-mode-hook ()
+  (setq fill-column 72)
+  (turn-on-auto-fill)
+  )
+
+(add-hook 'fortunate-mode-hook 'my-fortunate-mode-hook)
