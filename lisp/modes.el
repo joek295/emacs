@@ -11,7 +11,7 @@
 (menu-bar-mode 0)
 (global-linum-mode 1)
 (auto-compression-mode 1)
-(require 'mediawiki)
+(autoload 'mediawiki)
 
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
