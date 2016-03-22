@@ -19,7 +19,7 @@ Special commands:
   (text-mode)
   (setq major-mode 'fortunate-mode)
   (setq mode-name "Fortunate")
-  (use-loacl-map fortunate-mode-map)
+  (use-local-map fortunate-mode-map)
   (run-hooks 'fortunate-mode-hook)
   (make-local-variable 'paragraph-start)
   (make-local-variable 'paragraph-separate)
