@@ -15,6 +15,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(setq Info-additional-directory-list '("/home/joe/info"))
+
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
@@ -30,8 +32,6 @@
 (load "keys.el")
 (load "my-config.el")
 (load "my-eyecandy.el")
-
-(setq Info-directory-list '("~/info" "/usr/share/info"))
 
 ; M-x customize saves its configurations in the file 'custom-file'
 (setq custom-file "~/.emacs.d/lisp/my-custom.el")
