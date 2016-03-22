@@ -122,6 +122,7 @@
               (define-key evil-normal-state-map (kbd "C-S-<right>") 'paredit-backward-slurp-sexp)
               (define-key evil-normal-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
               (define-key evil-normal-state-map (kbd "C-a") 'my-increment-integer-at-point)
+              (define-key evil-normal-state-map (kbd "C-S-a") 'my-decrement-integer-at-point)
               )
 
             ;; Define evil keys in insert state:
@@ -240,10 +241,13 @@
               "q" 'calendar-exit
               )
 
-            (evil-define-key 'normal info-mode-map
+            (evil-define-key 'normal Info-mode-map
               "gg" 'evil-goto-first-line
               "n" 'evil-search-next
-              "q" 'quit-window
+              "N" 'evil-search-previous
+              "]]" 'Info-next
+              "[[" 'Info-previous
+              "q" 'Info-exit
               )
 
             (evil-define-key 'normal package-menu-mode-map
