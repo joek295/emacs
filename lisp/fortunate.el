@@ -31,14 +31,15 @@ Special commands:
   (defalias 'forward-fortune 'forward-page)
   (defalias 'narrow-to-fortune 'narrow-to-page)
   (defalias 'what-fortune 'what-page) 
-  (defalias 'evil-save 'fortunate-save)
   )
 
-(defun fortunate-save ()
-  "Save and recompile file."
-  (interactive)
-  (save-buffer)
-  (fortune-compile (buffer-file-name)))
+(defun fortunate-mode-after-save-hook ()
+  "Recompile fortunes files after saving."
+  (when (eq major-mode 'fortunate-mode))
+  (fortune-compile (buffer-file-name))
+  )
+
+(add-hook 'after-save-hook #'fortunate-mode-after-save-hook)
 
 (defun count-fortunes ()
   "Count the number of fortunes in the buffer."
@@ -49,7 +50,6 @@ Special commands:
       (goto-char (point-min))
       (prin1 (count-matches '"^%") t))))
 
-(define-key fortunate-mode-map "\C-x\C-s" 'fortunate-save)
 (define-key fortunate-mode-map "\C-xnf" 'narrow-to-fortune)
 (define-key fortunate-mode-map "\C-x[" 'backward-fortune)
 (define-key fortunate-mode-map "\C-x]" 'forward-fortune)
