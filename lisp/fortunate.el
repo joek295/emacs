@@ -35,8 +35,9 @@ Special commands:
 
 (defun fortunate-mode-after-save-hook ()
   "Recompile fortunes files after saving."
-  (when (eq major-mode 'fortunate-mode))
-  (fortune-compile (buffer-file-name))
+  (when (eq major-mode 'fortunate-mode)
+    (fortune-compile (buffer-file-name))
+    )
   )
 
 (add-hook 'after-save-hook #'fortunate-mode-after-save-hook)
