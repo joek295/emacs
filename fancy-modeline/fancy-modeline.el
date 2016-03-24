@@ -88,7 +88,8 @@
                 (propertize "INS" 'face 'mode-line-standard-face))))
 
 (setq my-mode-line-git
-      '(vc-mode vc-mode))
+      (format-mode-line '(vc-mode vc-mode) 'mode-line-position-face)
+      )
 
 (setq my-mode-line-format
               (list
