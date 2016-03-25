@@ -55,6 +55,9 @@
 (defface mode-line-vcs-face
   `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
   "font for version control information")
+(defface mode-line-bufsize-face
+  `((t (:foreground "#6c71c4" :weight bold :background "#002b36")))
+  "font for buffer size information")
 
 (set-face-foreground 'mode-line "#a9a9a9")
 (set-face-foreground 'mode-line-inactive  "#073642")
@@ -79,7 +82,9 @@
 (setq my-mode-line-buffname
       '(:eval (propertize " %b " 'face 'mode-line-bold-face)))
 
-(setq my-mode-line-bufsize " %I ")
+(setq my-mode-line-bufsize
+      (format-mode-line " %I " 'mode-line-bufsize-face)
+      )
 
 (setq my-mode-line-evilstate
       '(:eval (cond ((evil-insert-state-p)    (propertize " I " 'face 'mode-line-insert-face))
