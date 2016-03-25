@@ -48,6 +48,9 @@
 (defface mode-line-readonly-face
   `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
   "font for read-only flag")
+(defface mode-line-vcs-face
+  `((t (:foreground "#002b36" :weight bold :background "#6c71c4")))
+  "font for version control information")
 
 (set-face-foreground 'mode-line "#a9a9a9")
 (set-face-foreground 'mode-line-inactive  "#073642")
@@ -88,7 +91,7 @@
                 (propertize "INS" 'face 'mode-line-standard-face))))
 
 (setq my-mode-line-git
-      (format-mode-line '(vc-mode vc-mode) 'mode-line-position-face)
+      (format-mode-line '(vc-mode vc-mode) 'mode-line-vcs-face)
       )
 
 (setq my-mode-line-format
