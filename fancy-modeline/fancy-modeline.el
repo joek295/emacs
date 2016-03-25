@@ -79,6 +79,8 @@
 (setq my-mode-line-buffname
       '(:eval (propertize " %b " 'face 'mode-line-bold-face)))
 
+(setq my-mode-line-bufsize " %I ")
+
 (setq my-mode-line-evilstate
       '(:eval (cond ((evil-insert-state-p)    (propertize " I " 'face 'mode-line-insert-face))
                     ((evil-normal-state-p)    (propertize " N " 'face 'mode-line-normal-face))
