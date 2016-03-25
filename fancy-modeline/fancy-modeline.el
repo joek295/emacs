@@ -9,12 +9,16 @@
 
 ;;; Features:
 
-;; fancy-modeline is a modeline designed for use with evil mode.  It
-;; shows the current evil mode state, the active window, the buffer
-;; name, the current major mode, the cursor position, and whether a
-;; file is modified or read only.  It is designed to be flexible and
-;; simple to reconfigure to the user's liking.  The code should be
-;; well laid out, and easy to read, understand, and modify.
+;; fancy-modeline is a modeline designed for use with evil mode.
+
+;; It shows the current evil mode state, the active window, the buffer
+;; name, the current major mode, the cursor position, whether a file
+;; is modified or read only, and the version-control branch if
+;; applicable.
+
+;; It is designed to be flexible and simple to reconfigure to the
+;; user's liking.  The code should be well laid out, and easy to read,
+;; understand, and modify.
 
 ;;; Code:
 
