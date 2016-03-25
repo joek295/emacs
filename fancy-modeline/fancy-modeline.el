@@ -110,6 +110,7 @@
                my-mode-line-readonly
                my-mode-line-overwrite
                my-mode-line-git
+               my-mode-line-bufsize
                ))
 
 (defun my-reset-modeline ()
