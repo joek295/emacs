@@ -113,15 +113,16 @@
               (define-key evil-normal-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
               (define-key evil-normal-state-map (kbd "C-a") 'my-increment-integer-at-point)
               (define-key evil-normal-state-map (kbd "C-S-a") 'my-decrement-integer-at-point)
+              (define-key evil-normal-state-map (kbd "S-<insert>") 'my-yank-x-primary-selection)
               )
-
             ;; Define evil keys in insert state:
             (progn
               (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
               (define-key evil-insert-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
               (define-key evil-insert-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp)
-              (define-key evil-normal-state-map (kbd "C-S-<right>") 'paredit-backward-slurp-sexp)
-              (define-key evil-normal-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
+              (define-key evil-insert-state-map (kbd "C-S-<right>") 'paredit-backward-slurp-sexp)
+              (define-key evil-insert-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
+              (define-key evil-insert-state-map (kbd "S-<insert>") 'my-yank-x-primary-selection)
               )
 
 
@@ -130,8 +131,8 @@
               (define-key evil-visual-state-map (kbd "C-g") 'evil-normal-state)
               (define-key evil-visual-state-map (kbd "C-<right>") 'paredit-forward-slurp-sexp)
               (define-key evil-visual-state-map (kbd "C-<left>") 'paredit-forward-barf-sexp)
-              (define-key evil-normal-state-map (kbd "C-S-<right>") 'paredit-backward-slurp-sexp)
-              (define-key evil-normal-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
+              (define-key evil-visual-state-map (kbd "C-S-<right>") 'paredit-backward-slurp-sexp)
+              (define-key evil-visual-state-map (kbd "C-S-<left>") 'paredit-backward-barf-sexp)
               )
 
             ;; Define evil keys in replace state:
@@ -248,5 +249,9 @@
               "g" 'package-menu-refresh
               "u" ' package-menu-unmark
               )
+
+            (evil-define-key 'normal fortunate-mode-map
+              "}" 'forward-fortune
+              "{" 'backward-fortune)
             )
   )

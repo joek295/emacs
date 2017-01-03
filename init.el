@@ -21,6 +21,7 @@
 (autoload 'shortlines-mode "shortlines")
 (autoload 'viml-mode "viml")
 (autoload 'xbindkeys-mode "xbindkeys")
+(autoload 'brainfuck-mode "brainfuck")
 (autoload 'nethackrc-mode "nh-config")
 (load "my-evil.el")
 (load "my-magit.el")
