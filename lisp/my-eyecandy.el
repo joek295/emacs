@@ -1,6 +1,18 @@
-;; load solarized
-(set-frame-parameter nil 'background-mode 'dark)
-(load-theme 'solarized t)
+; Theme: ample
+(use-package ample-theme
+  :init (progn (load-theme 'ample t t)
+               (load-theme 'ample-flat t t)
+               (load-theme 'ample-light t t)
+               (enable-theme 'ample-flat))
+  :defer t
+  :ensure t)
+
+;; customisation for graphical systems
+; set font and size
+(progn
+  (set-frame-font "-mlss-Anonymous Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+  (set-face-attribute 'default nil :height 120)
+  )
 
 (setq visible-bell nil)
 
@@ -9,14 +21,9 @@
 
 (global-hl-line-mode 1)
 
-;; customisation for graphical systems
-(progn
-  (set-face-attribute 'default nil :height 100)
-  )
-
-(progn
-  (set-face-attribute 'linum nil :foreground "white" :background "base03")
-  )
+;; (progn
+;;   (set-face-attribute 'linum nil :foreground "white" :background "black")
+;;   )
 
 (use-package rainbow-delimiters
   :ensure t

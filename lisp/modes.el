@@ -25,6 +25,10 @@
   (setq auto-mode-alist (cons '("\\.nethackrc$" . nethackrc-mode) auto-mode-alist))
   (setq auto-mode-alist (cons '("\\.xbindkeysrc$" . xbindkeys-mode) auto-mode-alist))
   (setq auto-mode-alist (cons '("\\.wiki$" . mediawiki-mode) auto-mode-alist))
+  ; I use the plugin It's All Text! with Firefox.  When editing
+  ; Wikipedia articles with It's All Text, Emacs should automatically
+  ; enter mediawiki-mode so we get syntax highlighting.
+  (setq auto-mode-alist (cons '("\\.wikipedia\\.org" . mediawiki-mode) auto-mode-alist))
   )
 
 ;; dired mode
