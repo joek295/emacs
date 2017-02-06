@@ -21,10 +21,6 @@
 
 (global-hl-line-mode 1)
 
-;; (progn
-;;   (set-face-attribute 'linum nil :foreground "white" :background "black")
-;;   )
-
 (use-package rainbow-delimiters
   :ensure t
   :config (progn
@@ -50,71 +46,3 @@
                                 :foreground "magenta" :weight 'extra-bold)
             (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
             ))
-
-(defun my-fancy-modeline-fix-colors ()
-  "Set fancy-modeline colours correctly.  First check whether we
-  are running emacs in a terminal, and then set the colours
-  appropriately."
-  (interactive)
-  (if (display-graphic-p)
-      (progn
-        (set-face-attribute 'mode-line-standard-face nil
-                            :foreground "#073642" :background "#e4e4e4")
-        (set-face-attribute 'mode-line-bold-face nil
-                            :foreground "#073642" :background "#eee8d5")
-        (set-face-attribute 'mode-line-position-face nil
-                            :foreground "#eee8d5" :background "#073642")
-        (set-face-attribute 'mode-line-insert-face nil
-                            :foreground "#dc322f" :background "#073642")
-        (set-face-attribute 'mode-line-normal-face nil
-                            :foreground "#268bd2" :background "#073642")
-        (set-face-attribute 'mode-line-emacs-face nil
-                            :foreground "#cb4b16" :background "#073642")
-        (set-face-attribute 'mode-line-visual-face nil
-                            :foreground "#859900" :background "#073642")
-        (set-face-attribute 'mode-line-modified-face nil
-                            :foreground "#d33682" :background "#073642")
-        (set-face-attribute 'mode-line-readonly-face nil
-                            :foreground "#6c71c4" :background "#073642"))
-    (progn
-      (set-face-attribute 'mode-line-standard-face nil
-                          :foreground "#4d4d4d" :background "#e4e4e4")
-      (set-face-attribute 'mode-line-bold-face nil
-                          :foreground "#4d4d4d" :background "#eee8d5")
-      (set-face-attribute 'mode-line-position-face nil
-                          :foreground "#eee8d5" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-insert-face nil
-                          :foreground "#dc322f" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-normal-face nil
-                          :foreground "#268bd2" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-emacs-face nil
-                          :foreground "#cb4b16" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-visual-face nil
-                          :foreground "#859900" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-modified-face nil
-                          :foreground "#d33682" :background "#4d4d4d")
-      (set-face-attribute 'mode-line-readonly-face nil
-                          :foreground "#6c71c4" :background "#4d4d4d")
-      )))
-
-(defun my-fix-colors ()
-  "Setup colors correctly for graphical and terminal emulator
-versions of emacs.  Ensure that the modeline looks correct, and
-that hl-line-mode's line highlighting looks correct."
-  (interactive)
-  (my-fancy-modeline-fix-colors)
-  (if (display-graphic-p)
-      (progn
-        (set-face-background 'hl-line "#073642")
-        (set-face-attribute 'mode-line-inactive nil :foreground "#073642" :background "#eee8d5")
-        (set-face-attribute 'mode-line nil :foreground "#a9a9a9" :background "#002b36")
-        )
-    (progn
-      (set-face-background 'hl-line "#000000"))
-    (set-face-attribute 'mode-line-inactive nil :foreground "#4d4d4d")
-    (set-face-attribute 'mode-line nil :foreground "#e4e4e4")
-    )
-  )
-
-(my-fix-colors)
-(global-set-key (kbd "<f3>") 'my-fix-colors)

@@ -4,7 +4,7 @@
             (ido-mode t)
             (ido-everywhere t)
             (setq ido-enable-flex-matching t)
-            (setq ido-ignore-files)
+            (setq ido-ignore-files "")
             (add-to-list 'ido-ignore-files "\.pdf")
             (defun ido-ignore-non-user-except (name)
               "Ignore all non-user (*starred*) buffers except certain ones."

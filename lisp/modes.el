@@ -11,7 +11,7 @@
 (menu-bar-mode 0)
 (global-linum-mode 1)
 (auto-compression-mode 1)
-(autoload 'mediawiki)
+;(autoload 'mediawiki)
 
 ; which major mode to load:
 ; text-mode should be default; the .vimrc file should open in
@@ -29,6 +29,7 @@
   ; Wikipedia articles with It's All Text, Emacs should automatically
   ; enter mediawiki-mode so we get syntax highlighting.
   (setq auto-mode-alist (cons '("\\.wikipedia\\.org" . mediawiki-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.reddit\\.com.*\\.txt$" . markdown-mode) auto-mode-alist))
   )
 
 ;; dired mode
@@ -47,12 +48,16 @@
 (setq linum-format 'dynamic)
 
 ;; paredit mode
-(defun my-paredit-nonlisp ()
-  "Turn on paredit mode for non-lisps."
-  (interactive)
-  (set (make-local-variable 'paredit-space-for-delimiter-predicates)
-       '((lambda (endp delimiter) nil)))
-  (paredit-mode 1))
+(use-package paredit
+  :ensure t
+  :config
+  (defun my-paredit-nonlisp ()
+    "Turn on paredit mode for non-lisps."
+    (interactive)
+    (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+         '((lambda (endp delimiter) nil)))
+    (paredit-mode 1))
+  )
 
 ;; mode hooks
 ; after-init-hook
@@ -95,6 +100,13 @@
   (set-input-method "british")
   )
 (add-hook 'tex-mode-hook 'my-tex-mode-hook)
+
+(defun my-mediawiki-mode-hook ()
+  "MediaWiki mode hook"
+;  (setq sentence-end-double-space nil)
+;  (setq sentence-end "[.?!>}][[]\"')}]*\\($\\| \\|\t\\)*")
+  (set-input-method "TeX"))
+(add-hook 'mediawiki-mode-hook 'my-mediawiki-mode-hook)
 
 ; lisp modes
 (defun my-lisp-mode-hook ()
