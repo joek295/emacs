@@ -44,7 +44,8 @@ things as scrolling behaviour, tab behaviour, and backups.
 
 * my-evil.el: evil-mode configuration.  This is largely taken up with
   keybindings for evil-mode and evil-leader-mode.  It also defines
-  some useful functions, and defines advice for other built-in functions.
+  some useful functions, and defines advice for other built-in
+  functions.
 
 * my-magit.el: magit-mode configuration.  Mainly sets the keymap for
   magit in evil-mode, but also sets some options.

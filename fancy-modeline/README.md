@@ -80,7 +80,7 @@ they would provide, I will write something which replaces them.
 
 Finally, we tie it all together with setq-default mode-line-format.
 This is where you can change which indicators are displayed on the
-modeline, and which order they are in.  
+modeline, and which order they are in.
 
 ## UnLicense:
 

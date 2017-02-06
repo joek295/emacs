@@ -15,7 +15,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(setq Info-additional-directory-list '("/home/joe/info"))
+(setq Info-additional-directory-list '("/home/joe/data/info"))
 
 (autoload 'fortunate-mode "fortunate")
 (autoload 'shortlines-mode "shortlines")
@@ -23,6 +23,7 @@
 (autoload 'xbindkeys-mode "xbindkeys")
 (autoload 'brainfuck-mode "brainfuck")
 (autoload 'nethackrc-mode "nh-config")
+(load-library "mediawiki")
 (load "my-evil.el")
 (load "my-magit.el")
 (load "my-elfeed.el")

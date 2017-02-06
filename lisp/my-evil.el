@@ -27,6 +27,7 @@
               "b" 'ibuffer
               "g" 'magit-status
               "#" 'comment-or-uncomment-region
+              "x" 'helm-M-x
               )
             )
   )
@@ -145,6 +146,13 @@
               (define-key evil-operator-state-map "ic" 'evil-inner-c-comment)
               (define-key evil-operator-state-map "ac" 'evil-a-c-comment)
               )
+
+            (progn
+              (define-key evil-ex-map "b" 'helm-mini)
+              (define-key evil-ex-map "e" 'helm-find-files)
+              (define-key evil-ex-map "q" 'kill-active-buffer)
+              )
+            
             ;; Define evil keys in normal state when prog-mode is active
             (evil-define-key 'normal prog-mode-map
               (kbd "C-c i") 'indent-buffer
@@ -216,6 +224,8 @@
               "(" 'calendar-backward-month
               "0" 'calendar-beginning-of-month
               "$" 'calendar-end-of-month
+              "H" 'calendar-beginning-of-month
+              "L" 'calendar-end-of-month
               ; move by year
               "}" 'calendar-forward-year
               "{" 'calendar-backward-year
@@ -241,6 +251,9 @@
               "q" 'Info-exit
               )
 
+            (evil-define-key 'normal help-mode-map
+              "q" 'quit-window)
+            
             (evil-define-key 'normal package-menu-mode-map
               "q" 'quit-window
               "x" 'package-menu-execute
