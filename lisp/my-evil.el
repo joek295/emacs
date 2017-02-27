@@ -17,12 +17,12 @@
             (evil-leader/set-leader "<SPC>")
             (evil-leader/set-key
               "c" 'my-intelligent-compile
+              "e" 'eval-defun
               "f" 'fill-paragraph
               "j" 'open-line
               "o" 'newline-below
               "O" 'newline-above
               "p" 'my-yank-x-primary-selection
-              ;; Modes:
               "d" 'dired
               "b" 'ibuffer
               "g" 'magit-status
