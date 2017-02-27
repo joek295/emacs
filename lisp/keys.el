@@ -22,7 +22,6 @@
 (global-set-key (kbd "C-c E") 'fc-eval-and-replace)
 (global-set-key (kbd "C-c b") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 (global-set-key (kbd "C-c v") 'split-window-right-and-switch)
-(global-set-key (kbd "C-c f") 'elfeed)
 
 ; F<n>
 (global-set-key (kbd "<f1>") 'quickswitch)
