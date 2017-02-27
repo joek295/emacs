@@ -10,7 +10,7 @@
 ;; customisation for graphical systems
 ; set font and size
 (progn
-  (set-frame-font "-mlss-Anonymous Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+  (set-frame-font "-mlss-Anonymous Pro-*-*-*-*-*-*-*-*-m-0-iso10646-1")
   (set-face-attribute 'default nil :height 120)
   )
 
