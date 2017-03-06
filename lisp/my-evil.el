@@ -37,30 +37,12 @@
   :demand evil
   :config (progn
             (evil-mode 1)
-            (setq evil-move-cursor-back nil)
+            (setq evil-move-cursor-back t)
+            (setq evil-emacs-state-cursor '(bar))
             (setq evil-normal-state-modes (append evil-motion-state-modes evil-normal-state-modes))
             (setq evil-motion-state-modes nil)
             (setq evil-normal-state-modes (append evil-emacs-state-modes evil-normal-state-modes))
             (setq evil-emacs-state-modes nil)
-            ;; Evil-mode advice
-            ;; Both advice for evil functions, and advice which only
-            ;; needs to take effect when evil mode is active goes in
-            ;; this section
-            (defadvice evil-goto-line (after evil-goto-line-and-center activate)
-              "When using the goto line command ('G'), try to center the line"
-              (evil-scroll-line-to-center (line-number-at-pos)))
-            (defadvice evil-ex-search-next (after evil-find-key-and-center activate)
-              "When searching with evil's ex commands (':/'), center the line."
-              (evil-scroll-line-to-center (line-number-at-pos)))
-            (defadvice evil-ex-search-previous (after evil-find-key-and-center activate)
-              "When searching with evil's ex commands (':/'), center the line."
-              (evil-scroll-line-to-center (line-number-at-pos)))
-            (defadvice evil-search-next (after evil-find-key-and-center activate)
-              "When using the search next command ('n'), try to center the line"
-              (evil-scroll-line-to-center (line-number-at-pos)))
-            (defadvice evil-search-previous (after evil-find-key-and-center activate)
-              "When using the search previous command ('N'), try to center the line"
-              (evil-scroll-line-to-center (line-number-at-pos)))
             (defadvice switch-to-buffer (before return-to-normal-now activate)
               "In evil mode, return to normal state before switching buffer"
               (when evil-mode
@@ -87,6 +69,12 @@
               )
 
             ;; Evil-mode text objects
+            (evil-define-text-object evil-a-html-comment (count &optional beg end type)
+              "Text object for around html-style comments."
+              (evil-select-paren "<!--" "-->" beg end type count t))
+            (evil-define-text-object evil-inner-html-comment (count &optional beg end type)
+              "Text object for around html-style comments."
+              (evil-select-paren "<!--" "-->" beg end type count nil))
             (evil-define-text-object evil-a-c-comment (count &optional beg end type)
               "Text object for around C-style comments."
               (list (search-backward "/*") (search-forward "*/"))
