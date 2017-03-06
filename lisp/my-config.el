@@ -11,16 +11,12 @@
 (setq inhibit-startup-echo-area-message "joe") 
 (setq initial-scratch-message "") 
 
-; do not show italic face -- it doesn't display
-;(set-face-italic-p 'italic nil) 
-
 ; tabs
 (setq-default tab-width 4
               indent-tabs-mode nil) 
 
 ; smoother scrolling
-(setq scroll-margin 5   
-      scroll-conservatively 9999
+(setq scroll-conservatively 9999
       scroll-step 1) 
 
 ; backups
