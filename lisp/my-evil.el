@@ -229,6 +229,8 @@
               "m" 'calendar-set-mark
               "q" 'calendar-exit
               )
+              (evil-define-key 'normal special-mode-map
+                "q" 'quit-window)
 
             (evil-define-key 'normal Info-mode-map
               "gg" 'evil-goto-first-line
