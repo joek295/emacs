@@ -20,6 +20,7 @@
 (require 'fancy-modeline)
 
 (global-hl-line-mode 1)
+(show-paren-mode 1)
 
 (use-package rainbow-delimiters
   :ensure t
@@ -46,3 +47,8 @@
                                 :foreground "magenta" :weight 'extra-bold)
             (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
             ))
+
+; make visual selection more obvious by making it display in
+; inverse-video
+(set-face-attribute 'region nil
+                    :inverse-video t)
