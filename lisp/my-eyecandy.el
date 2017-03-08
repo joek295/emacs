@@ -25,6 +25,7 @@
 (use-package rainbow-delimiters
   :ensure t
   :config (progn
+            (setq rainbow-delimiters-max-face-count 6)
             (set-face-attribute 'rainbow-delimiters-depth-1-face nil
                                 :foreground "red" :weight 'bold)
             (set-face-attribute 'rainbow-delimiters-depth-2-face   nil
@@ -34,17 +35,9 @@
             (set-face-attribute 'rainbow-delimiters-depth-4-face   nil
                                 :foreground "green" :weight 'bold)
             (set-face-attribute 'rainbow-delimiters-depth-5-face   nil
-                                :foreground "blue" :weight 'bold)
+                                :foreground "cyan" :weight 'bold)
             (set-face-attribute 'rainbow-delimiters-depth-6-face   nil
-                                :foreground "color-34" :weight 'bold)
-            (set-face-attribute 'rainbow-delimiters-depth-7-face   nil
-                                :foreground "color-16" :weight 'bold)
-            (set-face-attribute 'rainbow-delimiters-depth-8-face   nil
-                                :foreground "white" :weight 'bold)
-            (set-face-attribute 'rainbow-delimiters-depth-9-face   nil
-                                :foreground "color-81" :weight 'bold)
-            (set-face-attribute 'rainbow-delimiters-unmatched-face nil
-                                :foreground "magenta" :weight 'extra-bold)
+                                :foreground "magenta" :weight 'bold)
             (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
             ))
 
