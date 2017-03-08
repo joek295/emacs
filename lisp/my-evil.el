@@ -255,4 +255,14 @@
               "}" 'forward-fortune
               "{" 'backward-fortune)
             )
+              (evil-define-key 'normal tetris-mode-map
+                "l" 'tetris-move-right
+                "h" 'tetris-move-left
+                "j" 'tetris-rotate-next
+                "k" 'tetris-rotate-prev
+                "p" 'tetris-pause-game
+                "s" 'tetris-start-game
+                "d" 'tetris-move-bottom
+                "q" 'quit-window
+                )
   )
